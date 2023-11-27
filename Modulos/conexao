@@ -57,8 +57,8 @@ SCOLOR='\033[0m'
 	}
 	
 	fun_wbsecurity () {
-	if [ -f /usr/bin/wssecury.sh /etc/SSHPlus/WebSocket /etc/SSHPlus/pub.key /etc/SSHPlus/priv.pem wssecury.sh wssecsl wssec WebSocket WebSocket.zip pub.key ]; then
-	echo "O proxy já está instalado. Ignorando a instalação."
+	if [ -f /usr/bin/wssecury.sh /etc/SSHPlus/WebSocket /etc/SSHPlus/pub.key /etc/SSHPlus/priv.pem]; then
+	rm -f wssecury.sh wssecsl wssec WebSocket WebSocket.zip pub.key
 	else
 	wget http://worldofdragon.us.eu.org/wssecu/wssecury.sh && dos2unix wssecury.sh && chmod 777 wssecury.sh && ./wssecury.sh
 	fi
