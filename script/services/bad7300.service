@@ -1,0 +1,13 @@
+[Unit]
+Description=Web-BadVpn Porta 7300
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root
+ExecStart=/bin/badpro fun_udpon
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

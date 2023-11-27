@@ -1,0 +1,13 @@
+[Unit]
+Description=Proxy Pro
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root
+ExecStart=/usr/bin/proxy --http --port 80 --ssh-only --response Security
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

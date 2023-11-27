@@ -1,0 +1,13 @@
+[Unit]
+Description=PROXY SOCKS
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root
+ExecStart=/etc/SSHPlus/proxy.py $porta
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

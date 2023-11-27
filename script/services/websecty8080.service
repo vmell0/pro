@@ -1,0 +1,13 @@
+[Unit]
+Description=Web-Security Porta 8080
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root
+ExecStart=/etc/SSHPlus/WebSocket -proxy_port 0.0.0.0:8080 -msg=Security
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

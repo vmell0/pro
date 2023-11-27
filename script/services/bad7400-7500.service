@@ -1,0 +1,13 @@
+[Unit]
+Description=Web-BadVpn Porta 7400, 7500
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root
+ExecStart=/bin/menub fun_badpro
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
