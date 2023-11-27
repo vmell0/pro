@@ -36,7 +36,7 @@ fun_lixo () {
 }
 fun_att () {
 [[ -e Plus ]] && rm Plus
-wget raw.githubusercontent.com/zxlordxz/cvpn/main/script/Plus && chmod 777 Plus
+wget raw.githubusercontent.com/vmell0/pro/main/script/Plus && chmod 777 Plus
 }
 clear
 echo -e "          \033[1;33m[\033[1;31m!\033[1;33m] \033[1;32mREMOVENDO LIXO \033[1;33m[\033[1;31m!\033[1;33m] \033[0m"

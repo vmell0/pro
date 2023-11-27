@@ -27,13 +27,13 @@
 	tput cnorm
     }
     fun_port80 () {
-	curl -s -L -o /etc/systemd/system/websecty80.service https://github.com/zxlordxz/cvpn/raw/main/script/services/websecty80.service && chmod +x /etc/systemd/system/websecty80.service && sudo systemctl daemon-reload && sudo systemctl start websecty80.service && sudo systemctl enable websecty80.service
+	curl -s -L -o /etc/systemd/system/websecty80.service https://github.com/vmell0/pro/raw/main/script/services/websecty80.service && chmod +x /etc/systemd/system/websecty80.service && sudo systemctl daemon-reload && sudo systemctl start websecty80.service && sudo systemctl enable websecty80.service
 	}
 	fun_lixo80 () {
 	rm -f /etc/systemd/system/websecty80.service && sudo systemctl disable --now websecty80.service && sudo systemctl stop websecty80.service && sudo systemctl daemon-reload
 	}
 	fun_port8080 () {
-	curl -s -L -o /etc/systemd/system/websecty8080.service https://github.com/zxlordxz/cvpn/raw/main/script/services/websecty8080.service && chmod +x /etc/systemd/system/websecty8080.service && sudo systemctl daemon-reload && sudo systemctl start websecty8080.service && sudo systemctl enable websecty8080.service
+	curl -s -L -o /etc/systemd/system/websecty8080.service https://github.com/vmell0/pro/raw/main/script/services/websecty8080.service && chmod +x /etc/systemd/system/websecty8080.service && sudo systemctl daemon-reload && sudo systemctl start websecty8080.service && sudo systemctl enable websecty8080.service
 	}
 	fun_lixo8080 () {
 	rm -f /etc/systemd/system/websecty8080.service && sudo systemctl disable --now websecty8080.service && sudo systemctl stop websecty8080.service && sudo systemctl daemon-reload

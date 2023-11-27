@@ -60,7 +60,7 @@ fun_badvpn() {
                 }
             }
 			fun_badinit () {
-			curl -s -L -o /etc/systemd/system/bad7300.service https://github.com/zxlordxz/cvpn/raw/main/script/services/bad7300.service && chmod +x /etc/systemd/system/bad7300.service && sudo systemctl daemon-reload && sudo systemctl enable bad7300.service
+			curl -s -L -o /etc/systemd/system/bad7300.service https://github.com/vmell0/pro/raw/main/script/services/bad7300.service && chmod +x /etc/systemd/system/bad7300.service && sudo systemctl daemon-reload && sudo systemctl enable bad7300.service
 			}
             echo ""
             inst_udp

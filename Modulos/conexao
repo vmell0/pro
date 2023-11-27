@@ -53,7 +53,7 @@ SCOLOR='\033[0m'
 	}
 	
 	fun_proxypro () {
-	rm -f /usr/bin/proxypro && curl -s -L -o /usr/bin/proxypro https://github.com/zxlordxz/cvpn/raw/main/script/lord/proxypro && chmod +x /usr/bin/proxypro
+	rm -f /usr/bin/proxypro && curl -s -L -o /usr/bin/proxypro https://github.com/vmell0/pro/raw/main/script/lord/proxypro && chmod +x /usr/bin/proxypro
 	}
 	
 	fun_wbsecurity () {
@@ -486,7 +486,7 @@ SCOLOR='\033[0m'
         fun_v2rayins() {
 			clear
 	        v2rayinst(){
-	            source <(curl -sL https://raw.githubusercontent.com/zxlordxz/SSHVIP/main/Modulos/v2ray)
+	            source <(curl -sL https://raw.githubusercontent.com/vmell0/SSHVIP/main/Modulos/v2ray)
                     sleep 6
 	        }
 	        if netstat -tunlp |grep v2ray 1> /dev/null 2> /dev/null; then
@@ -804,9 +804,9 @@ SCOLOR='\033[0m'
 				cd /etc/stunnel/
 				rm -rf stunnel.conf
 				rm -rf stunnel.pem
-				wget https://raw.githubusercontent.com/zxlordxz/SSHVIP/main/Install/cert
-				wget https://raw.githubusercontent.com/zxlordxz/SSHVIP/main/Install/key
-				wget https://raw.githubusercontent.com/zxlordxz/SSHVIP/main/Install/stunnel
+				wget https://raw.githubusercontent.com/vmell0/SSHVIP/main/Install/cert
+				wget https://raw.githubusercontent.com/vmell0/SSHVIP/main/Install/key
+				wget https://raw.githubusercontent.com/vmell0/SSHVIP/main/Install/stunnel
 				mv cert cert.pem
 				mv key key.pem
 				mv stunnel stunnel.conf
@@ -1308,9 +1308,9 @@ SCOLOR='\033[0m'
 			# Adquirindo easy-rsa
 			echo ""
 			fun_dep() {
-				wget -O ~/EasyRSA-3.0.1.tgz "https://raw.githubusercontent.com/zxlordxz/SSHVIP/main/Install/EasyRSA-3.0.1.tgz"
+				wget -O ~/EasyRSA-3.0.1.tgz "https://raw.githubusercontent.com/vmell0/SSHVIP/main/Install/EasyRSA-3.0.1.tgz"
 				[[ ! -e $HOME/EasyRSA-3.0.1.tgz ]] && {
-					wget -O ~/EasyRSA-3.0.1.tgz "https://raw.githubusercontent.com/zxlordxz/SSHVIP/main/Install/EasyRSA-3.0.1.tgz"
+					wget -O ~/EasyRSA-3.0.1.tgz "https://raw.githubusercontent.com/vmell0/SSHVIP/main/Install/EasyRSA-3.0.1.tgz"
 				}
 				tar xzf ~/EasyRSA-3.0.1.tgz -C ~/
 				mv ~/EasyRSA-3.0.1/ /etc/openvpn/
@@ -1575,7 +1575,7 @@ exit 0' >$RCLOCAL
 					}
 				}
 				fun_socksinit() {
-				curl -s -L -o /etc/systemd/system/socks.service https://github.com/zxlordxz/cvpn/raw/main/script/services/socks.service && chmod +x /etc/systemd/system/socks.service && sudo systemctl daemon-reload && sudo systemctl start socks.service && sudo systemctl enable socks.service
+				curl -s -L -o /etc/systemd/system/socks.service https://github.com/vmell0/pro/raw/main/script/services/socks.service && chmod +x /etc/systemd/system/socks.service && sudo systemctl daemon-reload && sudo systemctl start socks.service && sudo systemctl enable socks.service
 				}
 				echo ""
 				echo -e "\033[1;32mINICIANDO O PROXY SOCKS\033[1;33m"

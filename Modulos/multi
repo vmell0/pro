@@ -10,7 +10,7 @@ SINCRONIZARPAINEL () {
       bash <(wget -qO- sshplus.xyz/scripts/utilitarios/syncpainel/inst)
 }
 SLOWDNS () {
-      wget https://raw.githubusercontent.com/zxlordxz/cvpn/main/SlowDNS/install; chmod +x install; ./install
+      wget https://raw.githubusercontent.com/vmell0/pro/main/SlowDNS/install; chmod +x install; ./install
 }
 PAINELV20 () {
     multi2
@@ -20,7 +20,7 @@ nome () {
 echo " $t " > /root/name
 }
 BOTFREE () {
-    wget https://raw.githubusercontent.com/zxlordxz/cvpn/main/iniciar.sh -O iniciar.sh; chmod +x iniciar.sh; ./iniciar.sh
+    wget https://raw.githubusercontent.com/vmell0/pro/main/iniciar.sh -O iniciar.sh; chmod +x iniciar.sh; ./iniciar.sh
 }
 ATTSSL () {
     apt install wget -y; wget --no-check-certificate https://www.dropbox.com/s/v2hvhv8z86zlsqd/ssl.sh; chmod +x ssl.sh; ./ssl.sh

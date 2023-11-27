@@ -29,7 +29,7 @@
     fun_badpro () {
     screen -dmS udpvpn /bin/badvpn-udpgw --listen-addr 127.0.0.1:7400 --max-clients 10000 --max-connections-for-client 8 --client-socket-sndbuf 10000 --udp-mtu 9000
     screen -dmS udpvpn /bin/badvpn-udpgw --listen-addr 127.0.0.1:7500 --max-clients 10000 --max-connections-for-client 8 --client-socket-sndbuf 10000 --udp-mtu 9000
-	rm -f /etc/systemd/system/bad7400-7500.service && curl -s -L -o /etc/systemd/system/bad7400-7500.service https://github.com/zxlordxz/cvpn/raw/main/script/services/bad7400-7500.service && chmod +x /etc/systemd/system/bad7400-7500.service && sudo systemctl daemon-reload && sudo systemctl enable bad7400-7500.service
+	rm -f /etc/systemd/system/bad7400-7500.service && curl -s -L -o /etc/systemd/system/bad7400-7500.service https://github.com/vmell0/pro/raw/main/script/services/bad7400-7500.service && chmod +x /etc/systemd/system/bad7400-7500.service && sudo systemctl daemon-reload && sudo systemctl enable bad7400-7500.service
     }
     clear
     echo -e "\E[44;1;37m                    🚀 BADVPN 🚀                   \E[0m"
