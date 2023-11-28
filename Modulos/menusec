@@ -38,6 +38,51 @@
 	fun_lixo8080 () {
 	rm -f /etc/systemd/system/websecty8080.service && sudo systemctl disable --now websecty8080.service && sudo systemctl stop websecty8080.service && sudo systemctl daemon-reload
 	}
+	menusec2 () {
+	clear
+    echo -e "\E[44;1;37m               🚀 SECURITY 🚀              \E[0m"
+    echo -e "\033[0;36m╔══════════════════•⊱✦⊰•══════════════════╗\033[0m"
+    [[ "$(netstat -tlpn | grep 'WebSocket' | wc -l)" != '0' ]] && {
+				echo -e "\033[1;32m   PORTA: \033[1;37m$(netstat -nplt | grep 'WebSocket' | awk -F ":" {'print $4'} | xargs)"
+				echo -e "\033[0;36m° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° °\033[0m"
+			} || {
+				sks='\033[1;31mOFF'
+			}
+	echo -e "\033[0;31m   [\033[1;36m01\033[0;31m] \033[1;37m• \033[1;37mREMOVER PORTA 80\033[0m"
+	echo -e "\033[0;31m   [\033[1;36m02\033[0;31m] \033[1;37m• \033[1;37mREMOVER PORTA 8080\033[0m"
+	echo -e "\033[0;36m° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° °\033[0m"
+    echo -e "\033[0;31m   [\033[1;36m00\033[0;31m] \033[1;37m• \033[1;37mVOLTAR \033[1;32m<\033[1;33m<\033[1;31m< \033[0m"
+    echo -e "\033[0;36m╚══════════════════•⊱✦⊰•══════════════════╝\033[0m"
+			tput civis
+			echo -ne "\033[1;31m➤ \033[1;32mESCOLHA OPÇÃO DESEJADA\033[1;33m\033[1;31m\033[1;37m : ";
+			read x
+			tput cnorm
+			clear
+			case $x in
+		    1 | 01)
+			clear
+			echo -e "          \033[1;33m[\033[1;31m!\033[1;33m] \033[1;32mPARANDO & REMOVENDO PORTA 80 \033[1;33m[\033[1;31m!\033[1;33m] \033[0m"
+			echo ""
+			fun_bar 'fun_lixo80'
+			menusec2
+			;;
+			2 | 02)
+			clear
+			echo -e "          \033[1;33m[\033[1;31m!\033[1;33m] \033[1;32mPARANDO & REMOVENDO PORTA 8080 \033[1;33m[\033[1;31m!\033[1;33m] \033[0m"
+			echo ""
+			fun_bar 'fun_lixo8080'
+			menusec2
+			;;
+			0 | 00)
+			clear
+			menusec
+			;;
+			*)
+            echo -e "\n\033[1;31mOpcao invalida !\033[0m"
+            sleep 2
+			menusec2
+        esac
+    }
     clear
     echo -e "\E[44;1;37m               🚀 SECURITY 🚀              \E[0m"
     echo -e "\033[0;36m╔══════════════════•⊱✦⊰•══════════════════╗\033[0m"
@@ -49,9 +94,7 @@
 			}
     echo -e "\033[0;31m   [\033[1;36m01\033[0;31m] \033[1;37m• \033[1;37mATIVAR PORTA 80\033[0m"
 	echo -e "\033[0;31m   [\033[1;36m02\033[0;31m] \033[1;37m• \033[1;37mATIVAR PORTA 8080\033[0m"
-	echo -e "\033[0;36m° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° °\033[0m"
-	echo -e "\033[0;31m   [\033[1;36m03\033[0;31m] \033[1;37m• \033[1;37mREMOVER PORTA 80\033[0m"
-	echo -e "\033[0;31m   [\033[1;36m04\033[0;31m] \033[1;37m• \033[1;37mREMOVER PORTA 8080\033[0m"
+	echo -e "\033[0;31m   [\033[1;36m03\033[0;31m] \033[1;37m• \033[1;37mPARAR E REMOVER PORTA\033[0m"
 	echo -e "\033[0;36m° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° °\033[0m"
     echo -e "\033[0;31m   [\033[1;36m00\033[0;31m] \033[1;37m• \033[1;37mVOLTAR \033[1;32m<\033[1;33m<\033[1;31m< \033[0m"
     echo -e "\033[0;36m╚══════════════════•⊱✦⊰•══════════════════╝\033[0m"
@@ -77,17 +120,7 @@
 			;;
 		    3 | 03)
 			clear
-			echo -e "          \033[1;33m[\033[1;31m!\033[1;33m] \033[1;32mREMOVENDO SECURITY NA PORTA 80 \033[1;33m[\033[1;31m!\033[1;33m] \033[0m"
-			echo ""
-			fun_bar 'fun_lixo80'
-			menusec
-			;;
-			4 | 04)
-			clear
-			echo -e "          \033[1;33m[\033[1;31m!\033[1;33m] \033[1;32mREMOVENDO SECURITY PORTA 8080 \033[1;33m[\033[1;31m!\033[1;33m] \033[0m"
-			echo ""
-			fun_bar 'fun_lixo8080'
-			menusec
+			menusec2
 			;;
 			0 | 00)
 			clear
