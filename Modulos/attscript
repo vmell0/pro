@@ -35,7 +35,7 @@ fun_lixo () {
 [[ -e wssecury.sh ]] && [[ -e wssecsl ]] && [[ -e wssec ]] && [[ -e wssec ]] && [[ -e script.sh ]] && [[ -e rem.sh ]] && [[ -e add.sh ]] && [[ -e botteste.sh ]] && [[ -e install ]]
 }
 fun_lixo2 () {
-rm -f wssecury.sh &&  rm wssecsl && rm wssec && rm script.sh && rm rem.sh && rm add.sh && rm botteste.sh && rm install && apt clean && apt autoclean && apt full-upgrade -y
+rm -rf /root/wssecury.sh /root/wssecsl /root/wssec /root/script.sh /root/rem.sh /root/add.sh /root/botteste.sh /root/install && apt clean && apt autoclean && apt full-upgrade -y
 }
 fun_att () {
 [[ -e Plus ]] && rm Plus
