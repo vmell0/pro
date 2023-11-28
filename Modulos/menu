@@ -114,6 +114,9 @@ function limit2 () {
 fun_checkuser () {
 	rm -f /usr/bin/checkers && curl -s -L -o /usr/bin/checkers https://github.com/vmell0/pro/raw/main/script/lord/checkers && chmod +x /usr/bin/checkers
 	}
+fun_atualizar () {
+	rm -f /usr/bin/attscript && curl -s -L -o /usr/bin/attscript https://github.com/vmell0/pro/raw/main/script/lord/attscript && chmod +x /usr/bin/attscript
+	}
 function limit_ssh () {
 [[ $(ps x | grep "limiter"|grep -v grep |wc -l) = '0' ]] && limit1 || limit2
 }
@@ -458,6 +461,9 @@ case "$x" in
    exit;
    ;;
    C | c)
+   clear
+   echo -e "          \033[1;33m[\033[1;31m!\033[1;33m] \033[1;32mAGUARDE \033[1;33m[\033[1;31m!\033[1;33m] \033[0m"
+   echo ""
    fun_bar 'fun_checkuser'
    clear
    checkers
@@ -468,6 +474,10 @@ case "$x" in
    exit;
    ;;
    A | a)
+   clear
+   echo -e "          \033[1;33m[\033[1;31m!\033[1;33m] \033[1;32mAGUARDE \033[1;33m[\033[1;31m!\033[1;33m] \033[0m"
+   echo ""
+   fun_bar 'fun_atualizar'
    clear
    attscript
    ;;
