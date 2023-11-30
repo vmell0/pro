@@ -57,7 +57,7 @@
             echo ""
             echo -e "\033[1;32mBADVPN PRO DESATIVADO COM SUCESSO!\033[1;33m"
             sleep 3
-            fun_badvpn
+            menub
         else
             clear
             echo -e "\033[1;32mINICIANDO O BADVPN... \033[0m\n"
