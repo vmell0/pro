@@ -6,7 +6,7 @@ After=network.target
 Type=simple
 User=root
 WorkingDirectory=/root
-ExecStart=/bin/badpro fun_udpon
+ExecStart=/bin/menub fun_udpon
 Restart=always
 
 [Install]

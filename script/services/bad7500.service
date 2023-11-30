@@ -1,0 +1,13 @@
+[Unit]
+Description=Web-BadVpn Porta 7400
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root
+ExecStart=/bin/badvpn-udpgw --listen-addr 127.0.0.1:7500 --max-clients 10000 --max-connections-for-client 8 --client-socket-sndbuf 10000 --udp-mtu 9000
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
