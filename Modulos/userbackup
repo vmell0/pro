@@ -60,7 +60,7 @@ backbot=$1
 		echo -e "\e[1DOk"
 	}
 	clear
-	echo -e "\E[44;1;37m           GERENCIADOR DE BACKUPS               \E[0m"
+	echo -e "\E[44;1;37m            GERENCIADOR DE BACKUPS             \E[0m"
 	echo -e "\033[0;36m╔════════════════════•⊱✦⊰•════════════════════╗\033[0m"
 	echo -e "\033[0;31m   [\033[1;36m01\033[0;31m] \033[1;37m• \033[1;37mCRIAR BACKUP"
 	echo -e "\033[0;31m   [\033[1;36m02\033[0;31m] \033[1;37m• \033[1;37mRESTAURAR BACKUP"
