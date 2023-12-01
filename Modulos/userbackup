@@ -59,13 +59,14 @@ backbot=$1
 		helice
 		echo -e "\e[1DOk"
 	}
-	echo -e "\E[44;1;37m             Gerenciador De Backups              \E[0m"
-	echo ""
-	echo -e "\033[1;31m[\033[1;36m1\033[1;31m] \033[1;37m• \033[1;33mCRIAR BACKUP"
-	echo -e "\033[1;31m[\033[1;36m2\033[1;31m] \033[1;37m• \033[1;33mRESTAURAR BACKUP"
-	echo -e "\033[1;31m[\033[1;36m3\033[1;31m] \033[1;37m• \033[1;33mVOLTAR\033[1;37m"
-	echo ""
-	echo -ne "\033[1;32mOQUE DESEJA FAZER\033[1;31m ?\033[1;37m : "
+	clear
+	echo -e "\E[44;1;37m           GERENCIADOR DE BACKUPS               \E[0m"
+	echo -e "\033[0;36m╔════════════════════•⊱✦⊰•════════════════════╗\033[0m"
+	echo -e "\033[0;31m   [\033[1;36m01\033[0;31m] \033[1;37m• \033[1;37mCRIAR BACKUP"
+	echo -e "\033[0;31m   [\033[1;36m02\033[0;31m] \033[1;37m• \033[1;37mRESTAURAR BACKUP"
+	echo -e "\033[0;31m   [\033[1;36m00\033[0;31m] \033[1;37m• \033[1;37mVOLTAR \033[1;32m<\033[1;33m<\033[1;31m< \033[0m"
+	echo -e "\033[0;36m╚════════════════════•⊱✦⊰•════════════════════╝\033[0m"
+	echo -ne "\033[1;31m➤ \033[1;32mDIGITE A OPÇÃO\033[1;33m\033[1;31m\033[1;37m: "
 	read opcao
 	if [[ "$opcao" = '1' ]]; then
 		if [ -f "/root/usuarios.db" ]; then
@@ -190,7 +191,7 @@ backbot=$1
 			exit
 		fi
 	fi
-	if [[ "$opcao" = '3' ]]; then
+	if [[ "$opcao" = '0' ]]; then
 		menu
 	fi
 } || {
