@@ -13,7 +13,7 @@ except:
 PASS = ''
 BUFLEN = 8196 * 8
 TIMEOUT = 60
-MSG = '<span style="color:#8c72d5">S</span><span style="color:#55aad9">S</span><span style="color:#1de1dc">H</span><span style="color:#29c4e5">P</span><span style="color:#508cec">R</span><span style="color:#7754f4">O</span>'
+MSG = 'SSH-PRO'
 COR = '<font color="null">'
 FTAG = '</font>'
 DEFAULT_HOST = '0.0.0.0:22'
