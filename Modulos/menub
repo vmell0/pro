@@ -116,7 +116,6 @@
             echo -e "          \033[1;33m[\033[1;31m!\033[1;33m] \033[1;32mATIVANDO PORTAS 7400, 7500 \033[1;33m[\033[1;31m!\033[1;33m] \033[0m"
             echo ""
             fun_bar 'fun_badpro'
-            }
 			echo ""
             echo -e "\033[1;32mBADVPN ATIVADO COM SUCESSO\033[1;33m"
             sleep 3
