@@ -26,6 +26,21 @@
 	echo -e "\033[1;33m]\033[1;37m -\033[1;32m OK !\033[1;37m"
 	tput cnorm
     }
+    fun_badpro () {
+    screen -dmS udpvpn /bin/badvpn-udpgw --listen-addr 127.0.0.1:7400 --max-clients 10000 --max-connections-for-client 8 --client-socket-sndbuf 10000 --udp-mtu 9000
+    screen -dmS udpvpn /bin/badvpn-udpgw --listen-addr 127.0.0.1:7500 --max-clients 10000 --max-connections-for-client 8 --client-socket-sndbuf 10000 --udp-mtu 9000
+	fun_disablebad () {
+	sudo systemctl disable --now bad7400.service bad7500.service && sudo systemctl stop bad7400.service bad7500.service && rm -f /etc/systemd/system/bad7400.service /etc/systemd/system/bad7500.service && sudo systemctl daemon-reload
+	}
+	fun_installmultibad () {
+    curl -s -L -o /etc/systemd/system/bad7400.service https://github.com/vmell0/pro/raw/main/script/services/bad7400.service && curl -s -L -o /etc/systemd/system/bad7500.service https://github.com/vmell0/pro/raw/main/script/services/bad7500.service && chmod +x /etc/systemd/system/bad7400.service /etc/systemd/system/bad7500.service && sudo systemctl daemon-reload && sudo systemctl enable bad7400.service bad7500.service
+    }
+	fun_disablebad
+	fun_installmultibad
+	}
+	fun_disablemult () {
+	sudo systemctl disable --now bad7400.service bad7500.service && sudo systemctl stop bad7400.service bad7500.service && rm -f /etc/systemd/system/bad7400.service /etc/systemd/system/bad7500.service && sudo systemctl daemon-reload
+	}
 	fun_bad7300 () {
 	if ps x | grep -w udpvpn | grep -v grep 1>/dev/null 2>/dev/null; then
             clear
@@ -89,38 +104,6 @@
             menub
         fi
 	}
-	fun_badmulti () {
-	if ps x | grep -w udpvpn | grep -v grep 1>/dev/null 2>/dev/null; then
-            clear
-            echo -e "\033[1;32mDESATIVANDO..\033[1;33m"
-            echo ""
-			fun_disablebad () {
-	sudo systemctl disable --now bad7400.service bad7500.service && sudo systemctl stop bad7400.service bad7500.service && rm -f /etc/systemd/system/bad7400.service /etc/systemd/system/bad7500.service && sudo systemctl daemon-reload
-	}
-            fun_bar 'fun_disablebad'
-            echo ""
-            echo -e "\033[1;32mPORTAS 7400, 7500 DESATIVADO COM SUCESSO! \033[1;33m"
-            sleep 3
-            menub
-        else
-            clear
-            echo -e "          \033[1;33m[\033[1;31m!\033[1;33m] \033[1;32mATIVANDO PORTAS 7400, 7500 \033[1;33m[\033[1;31m!\033[1;33m] \033[0m"
-            echo ""
-    fun_badpro () {
-    screen -dmS udpvpn /bin/badvpn-udpgw --listen-addr 127.0.0.1:7400 --max-clients 10000 --max-connections-for-client 8 --client-socket-sndbuf 10000 --udp-mtu 9000
-    screen -dmS udpvpn /bin/badvpn-udpgw --listen-addr 127.0.0.1:7500 --max-clients 10000 --max-connections-for-client 8 --client-socket-sndbuf 10000 --udp-mtu 9000
-	fun_installmultibad () {
-    curl -s -L -o /etc/systemd/system/bad7400.service https://github.com/vmell0/pro/raw/main/script/services/bad7400.service && curl -s -L -o /etc/systemd/system/bad7500.service https://github.com/vmell0/pro/raw/main/script/services/bad7500.service && chmod +x /etc/systemd/system/bad7400.service /etc/systemd/system/bad7500.service && sudo systemctl daemon-reload && sudo systemctl enable bad7400.service bad7500.service
-    }
-	        fun_installmultibad
-	}
-            fun_bar 'fun_badpro'
-			echo ""
-            echo -e "\033[1;32mBADVPN ATIVADO COM SUCESSO\033[1;33m"
-            sleep 3
-            menub
-        fi
-	}
     clear
     echo -e "\E[44;1;37m                    🚀 BADVPN 🚀                   \E[0m"
     echo -e "\033[0;36m╔══════════════════════•⊱✦⊰•══════════════════════╗\033[0m"
@@ -131,8 +114,9 @@
         sleep 0.1
     fi
     var_sks1=$(ps x | grep "udpvpn"|grep -v grep > /dev/null && echo -e "\033[1;32m(ON) " || echo -e "\033[1;31m(OFF) ")
-    echo -e "\033[0;31m   [\033[1;36m01\033[0;31m] \033[1;37m• \033[1;37mATIVAR BADVPN (7300)\033[0m"
+    echo -e "\033[0;31m   [\033[1;36m01\033[0;31m] \033[1;37m• \033[1;37mATIVAR BADVPN $var_sks1\033[0m"
     echo -e "\033[0;31m   [\033[1;36m02\033[0;31m] \033[1;37m• \033[1;37mABRIR PORTAS 7400, 7500\033[0m"
+	echo -e "\033[0;31m   [\033[1;36m03\033[0;31m] \033[1;37m• \033[1;37mREMOVER PORTAS 7400, 7500\033[0m"
     echo -e "\033[0;31m   [\033[1;36m00\033[0;31m] \033[1;37m• \033[1;37mVOLTAR  \033[1;32m<\033[1;33m<\033[1;31m< \033[0m"
     echo -e "\033[0;36m╚══════════════════════•⊱✦⊰•══════════════════════╝\033[0m"
 			tput civis
@@ -147,7 +131,17 @@
             ;;
 			2 | 02)
 			clear
-            fun_badmulti
+            echo -e "          \033[1;33m[\033[1;31m!\033[1;33m] \033[1;32mATIVANDO PORTAS 7400, 7500 \033[1;33m[\033[1;31m!\033[1;33m] \033[0m"
+            echo ""
+            fun_bar 'fun_badpro'
+			menub
+            ;;
+			3 | 03)
+			clear
+            echo -e "          \033[1;33m[\033[1;31m!\033[1;33m] \033[1;32mREMOVENDO PORTAS 7400, 7500 \033[1;33m[\033[1;31m!\033[1;33m] \033[0m"
+            echo ""
+            fun_bar 'fun_disablemult'
+			menub
             ;;
 			0 | 00)
 			clear
