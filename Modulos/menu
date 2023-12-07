@@ -354,7 +354,6 @@ case "$x" in
    clear
    alterarlimite
    sleep 3
-   ;; 
    ;;
    7 | 07)
    clear
