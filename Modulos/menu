@@ -471,9 +471,6 @@ case "$x" in
    ;;
    A | a)
    clear
-   echo ""
-   fun_bar 'fun_atualizar'
-   clear
    attscript
    ;;
    *)
