@@ -33,6 +33,7 @@ grep -v "^PasswordAuthentication" /etc/ssh/sshd_config >/tmp/passlogin && mv /tm
 echo "PasswordAuthentication yes" >>/etc/ssh/sshd_config
 _dir1='/bin'
 _dir2='/etc/SSHPlus'
+_dir3='/etc/systemd/system'
 rm $_dir2/ShellBot.sh $_dir2/cabecalho $_dir2/open.py $_dir2/proxy.py $_dir2/wsproxy.py >/dev/null 2>&1
 _mdls=("addhost" "ajuda" "proxypro" "menubad" "install" "wssecury.sh" "ulekCheckuser" "menusec" "proxy.service" "menupro" "proxy8080.service" "atualizar" "dtmenu" "proxy" "proxydt" "websecurity" "speed" "detporta" "antcrashvpn5" "wbsecurity" "wsproxyany" "proxydtunnel" "checkers" "alterarlimite" "alterarsenha" "tcptweaker.sh" "gltunnel" "utili" "multi" "apache2menu" "check" "chuser" "limit" "rps_cpu" "attscript" "proxy" "Autobackup" "backup_mail.sh" "badvpn" "badpro" "badpro1" "badvpn2" "badvpn3" "banner" "bashtop" "ddos" "blocksite" "blockt" "blockuser" "bot" "botssh" "cabecalho" "conexao" "criarteste" "criarusuario" "delhost" "delscript" "detalhes" "dns-netflix.sh" "droplimiter" "expcleaner" "ban.sh" "fr" "infousers" "inst-botteste" "initcheck" "instsqd" "limiter" "menu" "menub" "mudardata" "mtuning" "multi" "open.py" "otimizar" "painelv2ray" "prissh" "prnet.sh" "proxy.py" "reiniciarservicos" "reiniciarsistema" "remover" "senharoot" "ShellBot.sh" "speedtest" "sshmonitor" "swapmemory" "trafegototal" "trojan-go" "uexpired" "userbackup" "verifatt" "verifbot" "v2raymanager" "webmin.sh" "wsproxy.py" "pkill.sh")
 for _arq in ${_mdls[@]}; do
@@ -45,6 +46,12 @@ for _arq2 in ${_mdls2[@]}; do
 	[[ -e $_dir2/$_arq2 ]] && rm $_dir2/$_arq2 >/dev/null 2>&1
 	wget -c -P $_dir2 https://raw.githubusercontent.com/vmell0/pro/main/Modulos/$_arq2
 	chmod +x $_dir2/$_arq2
+done
+_mdls3=("bad7300.service" "bad7400.service" "bad7500.service" "proxy.service" "socks.service" "websecty80.service" "websecty8080.service")
+for _arq3 in ${_mdls3[@]}; do
+	[[ -e $_dir3/$_arq3 ]] && rm $_dir3/$_arq3 >/dev/null 2>&1
+	wget -c -P $_dir3 https://raw.githubusercontent.com/vmell0/pro/main/script/services/$_arq3
+	chmod +x $_dir3/$_arq3
 done
 mv $_dir1/cabecalho $_dir1/bot $_dir1/open.py $_dir1/proxy.py $_dir1/wsproxy.py $_dir2
 _arq_host="/etc/hosts"

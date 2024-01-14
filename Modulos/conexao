@@ -1536,7 +1536,7 @@ exit 0' >$RCLOCAL
 					screen -wipe >/dev/null
 				}
 				fun_socksofff() {
-				sudo systemctl disable --now socks.service && sudo systemctl stop socks.service && rm -f /etc/systemd/system/socks.service && sudo systemctl daemon-reload
+				sudo systemctl disable --now socks.service && sudo systemctl stop socks.service && sudo systemctl daemon-reload
 				}
 				echo -e "\033[1;32mDESATIVANDO O PROXY SOCKS\033[1;33m"
 				echo ""
@@ -1571,7 +1571,7 @@ exit 0' >$RCLOCAL
 					}
 				}
 				fun_socksinit() {
-				curl -s -L -o /etc/systemd/system/socks.service https://github.com/vmell0/pro/raw/main/script/services/socks.service && chmod +x /etc/systemd/system/socks.service && sudo systemctl daemon-reload && sudo systemctl start socks.service && sudo systemctl enable socks.service
+				sudo systemctl enable socks.service && sudo systemctl start socks.service
 				}
 				echo ""
 				echo -e "\033[1;32mINICIANDO O PROXY SOCKS\033[1;33m"
