@@ -6,7 +6,7 @@ After=network.target
 Type=simple
 User=root
 WorkingDirectory=/root
-ExecStart=/etc/SSHPlus/WebSocket -proxy_port 0.0.0.0:8080 -msg=Security
+ExecStart=/etc/SSHPlus/WebSocket -proxy_port 0.0.0.0:8080 -msg=SECURITY
 Restart=always
 
 [Install]
