@@ -5,8 +5,8 @@ After=network.target
 [Service]
 Type=simple
 User=root
-WorkingDirectory=/root
-ExecStart=/bin/badvpn-udpgw --listen-addr 127.0.0.1:7400 --max-clients 10000 --max-connections-for-client 8 --client-socket-sndbuf 10000 --udp-mtu 9000
+WorkingDirectory=/$HOME
+ExecStart=/bin/menub fun_badpro
 Restart=always
 
 [Install]

@@ -1,6 +1,7 @@
 #!/bin/bash
 clear
 echo -e "\033[1;32mDESEJA DESISTALAR O SSH-PRO ?\033[1;33m"
+echo ""
 read -p "Deseja Remover? [s/n] " resp
 if [[ "$resp" = s || "$resp" = S ]];then
     apt-get purge screen -y > /dev/null 2>&1
