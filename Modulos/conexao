@@ -51,10 +51,10 @@ SCOLOR='\033[0m'
 		done
 	}	
 	fun_proxypro () {
-	rm -f /usr/bin/proxypro && curl -s -L -o /usr/bin/proxypro https://github.com/xzlordzx/sshpro/raw/main/proxypro && chmod +x /usr/bin/proxypro
+	rm -rf /usr/bin/proxypro && curl -s -L -o /usr/bin/proxypro https://github.com/xzlordzx/sshpro/raw/main/proxypro && chmod +x /usr/bin/proxypro
 	}
 	fun_wbsecurity () {
-	rm -f /usr/bin/menusec && curl -s -L -o /usr/bin/menusec https://github.com/xzlordzx/sshpro/raw/main/menusec && chmod +x /usr/bin/menusec
+	rm -rf /usr/bin/menusec && curl -s -L -o /usr/bin/menusec https://github.com/xzlordzx/sshpro/raw/main/menusec && chmod +x /usr/bin/menusec
 	}
 	slow_setup() {
 		[[ -e "/bin/slowdns" ]] && {
