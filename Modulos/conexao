@@ -2065,71 +2065,70 @@ exit 0' >$RCLOCAL
 			echo -e "   \033[1;32mSERVICO: \033[1;33mOPENSSH \033[1;32mPORTA: \033[1;37m$(grep 'Port' /etc/ssh/sshd_config | cut -d' ' -f2 | grep -v 'no' | xargs)" && sts6="\033[1;32m(ON) "
 			[[ "$(ps x | grep 'slowdns' | grep -v 'grep' | wc -l)" != '0' ]] && {
 			    echo -e "   \033[1;32mSERVICO: \033[1;33mSLOWDNS: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'slowdns' | awk {'print $4'} | cut -d: -f2 | xargs)"
-				sts9="\033[1;32m(ON) "
+				sts9="\033[1;32m✅ "
 			} || {
-				sts9="\033[1;31m(OFF) "
+				sts9="\033[1;31m❌ "
 			}            
 			[[ "$(netstat -tlpn | grep 'sslh' | wc -l)" != '0' ]] && {
 				echo -e "   \033[1;32mSERVICO: \033[1;33mSSLH: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'sslh' | awk {'print $4'} | cut -d: -f2 | xargs)"
-				sts7="\033[1;32m(ON) "
+				sts7="\033[1;32m✅) "
 			} || {
-				sts7="\033[1;31m(OFF) "
+				sts7="\033[1;31m❌ "
 			}
 			[[ "$(netstat -tlpn | grep 'openvpn' | wc -l)" != '0' ]] && {
 				echo -e "   \033[1;32mSERVICO: \033[1;33mOPENVPN: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'openvpn' | awk {'print $4'} | cut -d: -f2 | xargs)"
-				sts5="\033[1;32m(ON) "
+				sts5="\033[1;32m✅) "
 			} || {
-				sts5="\033[1;31m(OFF) "
+				sts5="\033[1;31m❌ "
 			}
 			[[ "$(netstat -tlpn | grep 'python' | wc -l)" != '0' ]] && {
 				echo -e "   \033[1;32mSERVICO: \033[1;33mPROXY SOCKS \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'python' | awk {'print $4'} | cut -d: -f2 | xargs)"
-				sts4="\033[1;32m(ON) "
+				sts4="\033[1;32m✅ "
 			} || {
-				sts4="\033[1;31m(OFF) "
+				sts4="\033[1;31m❌ "
 			}
 			[[ -e "/etc/stunnel/stunnel.conf" ]] && {
 				echo -e "   \033[1;32mSERVICO: \033[1;33mSSL TUNNEL \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'stunnel' | awk {'print $4'} | cut -d: -f2 | xargs)"
-				sts3="\033[1;32m(ON) "
+				sts3="\033[1;32m✅ "
 			} || {
-				sts3="\033[1;31m(OFF) "
+				sts3="\033[1;31m❌ "
 			}
 			[[ "$(netstat -tlpn | grep 'dropbear' | wc -l)" != '0' ]] && {
 				echo -e "   \033[1;32mSERVICO: \033[1;33mDROPBEAR \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'dropbear' | awk -F ":" {'print $4'} | xargs)"
-				sts2="\033[1;32m(ON) "
+				sts2="\033[1;32m✅ "
 			} || {
-				sts2="\033[1;31m(OFF) "
+				sts2="\033[1;31m❌ "
 			}
 			[[ "$(netstat -tlpn | grep 'squid' | wc -l)" != '0' ]] && {
 				echo -e "   \033[1;32mSERVICO: \033[1;33mSQUID \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'squid' | awk -F ":" {'print $4'} | xargs)"
-				sts1="\033[1;32m(ON) "
+				sts1="\033[1;32m✅ "
 			} || {
-				sts1="\033[1;31m(OFF) "
+				sts1="\033[1;31m❌ "
 			}
 			[[ "$(netstat -tlpn | grep 'WebSocket' | wc -l)" != '0' ]] && {
 				echo -e "   \033[1;32mSERVICO: \033[1;33mWEBSECURITY \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'WebSocket' | awk -F ":" {'print $4'} | xargs)"
-				security1="\033[1;32m(ON) "
+				security1="\033[1;32m✅ "
 			} || {
-				security1="\033[1;31m(OFF) "
+				security1="\033[1;31m❌ "
 			}
 			[[ "$(netstat -tunlp | grep 'trojan-go' | wc -l)" != '0' ]] && {
-				trojansts="\033[1;32m(ON) "
+				trojansts="\033[1;32m✅ "
 			} || {
-				trojansts="\033[1;31m(OFF) "
+				trojansts="\033[1;31m❌ "
 			}
             [[ $(netstat -nplt | grep -wc 'v2ray') != '0' ]] && {
-			sks='\033[1;32mON'
+			sks='\033[1;32m✅'
 			echo -e "   \033[1;32mSERVICO: \033[1;33mV2RAY \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'v2ray' | awk {'print $4'} | cut -d: -f2 | xargs)"
 	    	} || {
-			sks='\033[1;31mOFF'
+			sks='\033[1;31m❌'
 		    }
             [[ $(screen -list | grep -wc 'v2ray') != '0' ]] && xv2ray="\033[1;32m(ON) " || xv2ray="\033[1;31m(OFF) "
                         [[ $(netstat -nplt | grep -wc 'proxy') != '0' ]] && {
-			proxy1='\033[1;32m(ON)'
+			proxy1='\033[1;32m✅'
 			echo -e "   \033[1;32mSERVICO: \033[1;33mPROXY PRO \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'proxy' | awk {'print $4'} | cut -d: -f2 | xargs)"
 		    } || {
-			proxy1='\033[1;31m(OFF)'
+			proxy1='\033[1;31m❌'
 		    }
-            [[ $(screen -list | grep -wc 'proxy') != '0' ]] && proxydt="\033[1;32m(ON) " || proxydt="\033[1;31m(OFF) "
 			echo -e "\033[0;36m° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° °\033[0m"
 			echo -e "\033[0;31m   [\033[1;36m01\033[0;31m] \033[1;37m• \033[1;37mOPENSSH \033[01;31m$sts6\033[0m"
 echo -e "\033[0;31m   [\033[1;36m02\033[0;31m] \033[1;37m• \033[1;37mSQUID PROXY \033[01;31m$sts1\033[0m"

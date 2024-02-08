@@ -49,6 +49,16 @@ echo -ne "\033[1;33mREINICIANDO APACHE2 "; fun_prog '/etc/init.d/apache2 restart
 echo ""
 sleep 1
 fi
+if netstat -nltp|grep 'proxy' > /dev/null; then
+echo -ne "\033[1;33mREINICIANDO PROXYPRO "; fun_prog 'systemctl restart proxy-80'
+echo ""
+sleep 1
+fi
+if netstat -nltp|grep 'WebSocket' > /dev/null; then
+echo -ne "\033[1;33mREINICIANDO PROXYPRO "; fun_prog 'systemctl restart websecty80 websecty8080'
+echo ""
+sleep 1
+fi
 if [[ -e /etc/init.d/stunnel4 ]]; then
 echo -ne "\033[1;33mREINICIANDO OPENVPN "; fun_prog '/etc/init.d/stunnel4 restart'
 echo "" 
