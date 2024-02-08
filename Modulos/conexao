@@ -2062,7 +2062,7 @@ exit 0' >$RCLOCAL
 			clear
             echo -e "\E[44;1;37m                   🚀 CONEXÕES 🚀                    \E[0m"
             echo -e "\033[0;36m╔═══════════════════════•⊱✦⊰•═══════════════════════╗\033[0m"
-			echo -e "   \033[1;33mOPENSSH: \033[1;32mPORTA: \033[1;37m$(grep 'Port' /etc/ssh/sshd_config | cut -d' ' -f2 | grep -v 'no' | xargs)" && sts6="\033[1;32m(ON) "
+			echo -e "   \033[1;33mOPENSSH: \033[1;32mPORTA: \033[1;37m$(grep 'Port' /etc/ssh/sshd_config | cut -d' ' -f2 | grep -v 'no' | xargs)" && sts6="\033[1;32m✅ "
 			[[ "$(ps x | grep 'slowdns' | grep -v 'grep' | wc -l)" != '0' ]] && {
 			    echo -e "   \033[1;33mSLOWDNS: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'slowdns' | awk {'print $4'} | cut -d: -f2 | xargs)"
 				sts9="\033[1;32m✅ "

