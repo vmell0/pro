@@ -1549,14 +1549,14 @@ exit 0' >$RCLOCAL
         echo -e "\033[0;36m╔═══════════════════════•⊱✦⊰•═══════════════════════╗\033[0m"
 		[[ "$(netstat -tlpn | grep 'python' | wc -l)" != '0' ]] && {
 				echo -e "   \033[1;33mPORTA: \033[1;37m$(netstat -nplt | grep 'python' | awk {'print $4'} | cut -d: -f2 | xargs)"
+				echo -e "\033[0;36m° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° °\033[0m"
 				sts4="\033[1;32m[ON] "
 			} || {
 				sts4="\033[1;31m[OFF] "
 			}
-		echo -e "\033[0;36m° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° °\033[0m"
-		echo -e "\033[1;31m[\033[1;36m01\033[1;31m] \033[1;37m• \033[1;33mATIVAR/DESATIVAR $sts4 \033[0m"
-		echo -e "\033[1;31m[\033[1;36m02\033[1;31m] \033[1;37m• \033[1;33mABRIR PORTA\033[0m"
-		echo -e "\033[1;31m[\033[1;36m03\033[1;31m] \033[1;37m• \033[1;33mALTERAR STATUS\033[0m"
+		echo -e "\033[1;31m[\033[1;36m01\033[1;31m] \033[1;37m• \033[1;37mATIVAR/DESATIVAR $sts4 \033[0m"
+		echo -e "\033[1;31m[\033[1;36m02\033[1;31m] \033[1;37m• \033[1;37mABRIR PORTA\033[0m"
+		echo -e "\033[1;31m[\033[1;36m03\033[1;31m] \033[1;37m• \033[1;37mALTERAR STATUS\033[0m"
 		echo -e "\033[0;36m° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° °\033[0m"
 		echo -e "\033[1;31m[\033[1;36m00\033[1;31m] \033[1;37m• \033[1;33mVOLTAR\033[0m"
 		echo -e "\033[0;36m╚═══════════════════════•⊱✦⊰•═══════════════════════╝\033[0m"
@@ -1780,13 +1780,13 @@ exit 0' >$RCLOCAL
         echo -e "\033[0;36m╔═══════════════════════•⊱✦⊰•═══════════════════════╗\033[0m"
 		[[ "$(netstat -tlpn | grep 'ws' | wc -l)" != '0' ]] && {
 				echo -e "   \033[1;33mPORTA: \033[1;37m$(netstat -nplt | grep 'ws' | awk {'print $4'} | cut -d: -f2 | xargs)"
+				echo -e "\033[0;36m° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° °\033[0m"
 				ws1="\033[1;32m[ON] "
 			} || {
 				ws1="\033[1;31m[OFF] "
 			}
-		echo -e "\033[0;36m° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° °\033[0m"
-		echo -e "\033[1;31m[\033[1;36m01\033[1;31m] \033[1;37m• \033[1;33mATIVAR/DESATIVAR $ws1\033[0m"
-        echo -e "\033[1;31m[\033[1;36m02\033[1;31m] \033[1;37m• \033[1;33mALTERAR STATUS\033[0m"
+		echo -e "\033[1;31m[\033[1;36m01\033[1;31m] \033[1;37m• \033[1;37mATIVAR/DESATIVAR $ws1\033[0m"
+        echo -e "\033[1;31m[\033[1;36m02\033[1;31m] \033[1;37m• \033[1;37mALTERAR STATUS\033[0m"
 		echo -e "\033[0;36m° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° °\033[0m"
 		echo -e "\033[1;31m[\033[1;36m00\033[1;31m] \033[1;37m• \033[1;33mVOLTAR\033[0m"
 		echo -e "\033[0;36m╚═══════════════════════•⊱✦⊰•═══════════════════════╝\033[0m"
@@ -1965,34 +1965,34 @@ exit 0' >$RCLOCAL
 		echo -e "\E[44;1;37m                    🚀 PROXY 🚀                      \E[0m"
         echo -e "\033[0;36m╔═══════════════════════•⊱✦⊰•═══════════════════════╗\033[0m"
 		[[ "$(netstat -tlpn | grep 'python' | wc -l)" != '0' ]] && {
-				echo -e "   \033[1;33mPROXY SOCKS: \033[1;37m$(netstat -nplt | grep 'python' | awk {'print $4'} | cut -d: -f2 | xargs)"
+				echo -e "   \033[1;33mPROXY SOCKS: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'python' | awk {'print $4'} | cut -d: -f2 | xargs)"
 				sts1="\033[1;32m[ON] "
 			} || {
 				sts1="\033[1;31m[OFF] "
 			}
 		[[ "$(netstat -tlpn | grep 'ws' | wc -l)" != '0' ]] && {
-				echo -e "   \033[1;33mWEBSOCKET: \033[1;37m$(netstat -nplt | grep 'ws' | awk {'print $4'} | cut -d: -f2 | xargs)"
+				echo -e "   \033[1;33mWEBSOCKET: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'ws' | awk {'print $4'} | cut -d: -f2 | xargs)"
 				sts2="\033[1;32m[ON] "
 			} || {
 				sts2="\033[1;31m[OFF] "
 			}
 		[[ "$(netstat -tlpn | grep 'WebSocket' | wc -l)" != '0' ]] && {
-				echo -e "   \033[1;33mSECURITY: \033[1;37m$(netstat -nplt | grep 'WebSocket' | awk {'print $4'} | cut -d: -f2 | xargs)"
+				echo -e "   \033[1;33mSECURITY: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'WebSocket' | awk {'print $4'} | cut -d: -f2 | xargs)"
 				sts3="\033[1;32m[ON] "
 			} || {
 				sts3="\033[1;31m[OFF] "
 			}
 		[[ "$(netstat -tlpn | grep 'proxy' | wc -l)" != '0' ]] && {
-				echo -e "   \033[1;33mPROXY-PRO: \033[1;37m$(netstat -nplt | grep 'proxy' | awk {'print $4'} | cut -d: -f2 | xargs)"
+				echo -e "   \033[1;33mPROXY-PRO: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'proxy' | awk {'print $4'} | cut -d: -f2 | xargs)"
 				sts4="\033[1;32m[ON] "
 			} || {
 				sts4="\033[1;31m[OFF] "
 			}
 		echo -e "\033[0;36m° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° °\033[0m"
-		echo -e "\033[1;31m[\033[1;36m01\033[1;31m] \033[1;37m• \033[1;33mPROXY SOCKS $sts1\033[0m"
-		echo -e "\033[1;31m[\033[1;36m02\033[1;31m] \033[1;37m• \033[1;33mWEBSOCKET $sts2\033[0m"
-		echo -e "\033[1;31m[\033[1;36m03\033[1;31m] \033[1;37m• \033[1;33mSECURITY $sts3\033[0m"
-		echo -e "\033[1;31m[\033[1;36m04\033[1;31m] \033[1;37m• \033[1;33mPROXY-PRO $sts4\033[0m"
+		echo -e "\033[1;31m[\033[1;36m01\033[1;31m] \033[1;37m• \033[1;37mPROXY SOCKS $sts1\033[0m"
+		echo -e "\033[1;31m[\033[1;36m02\033[1;31m] \033[1;37m• \033[1;37mWEBSOCKET $sts2\033[0m"
+		echo -e "\033[1;31m[\033[1;36m03\033[1;31m] \033[1;37m• \033[1;37mSECURITY $sts3\033[0m"
+		echo -e "\033[1;31m[\033[1;36m04\033[1;31m] \033[1;37m• \033[1;37mPROXY-PRO $sts4\033[0m"
 		echo -e "\033[0;36m° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° °\033[0m"
 		echo -e "\033[1;31m[\033[1;36m00\033[1;31m] \033[1;37m• \033[1;33mVOLTAR\033[0m"
 		echo -e "\033[0;36m╚═══════════════════════•⊱✦⊰•═══════════════════════╝\033[0m"
@@ -2168,51 +2168,51 @@ exit 0' >$RCLOCAL
 			clear
             echo -e "\E[44;1;37m                   🚀 CONEXÕES 🚀                    \E[0m"
             echo -e "\033[0;36m╔═══════════════════════•⊱✦⊰•═══════════════════════╗\033[0m"
-			echo -e "   \033[1;33mOPENSSH: \033[1;37m$(grep 'Port' /etc/ssh/sshd_config | cut -d' ' -f2 | grep -v 'no' | xargs)" && sts6="\033[1;32m[ON] "
+			echo -e "   \033[1;33mOPENSSH: \033[1;32mPORTA: \033[1;37m$(grep 'Port' /etc/ssh/sshd_config | cut -d' ' -f2 | grep -v 'no' | xargs)" && sts6="\033[1;32m[ON] "
 			[[ "$(ps x | grep 'slowdns' | grep -v 'grep' | wc -l)" != '0' ]] && {
-			    echo -e "   \033[1;33mSLOWDNS: \033[1;37m$(netstat -nplt | grep 'slowdns' | awk {'print $4'} | cut -d: -f2 | xargs)"
+			    echo -e "   \033[1;33mSLOWDNS: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'slowdns' | awk {'print $4'} | cut -d: -f2 | xargs)"
 				sts9="\033[1;32m[ON] "
 			} || {
 				sts9="\033[1;31m[OFF] "
 			}            
 			[[ "$(netstat -tlpn | grep 'sslh' | wc -l)" != '0' ]] && {
-				echo -e "   \033[1;33mSSLH: \033[1;37m$(netstat -nplt | grep 'sslh' | awk {'print $4'} | cut -d: -f2 | xargs)"
+				echo -e "   \033[1;33mSSLH: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'sslh' | awk {'print $4'} | cut -d: -f2 | xargs)"
 				sts7="\033[1;32m[ON] "
 			} || {
 				sts7="\033[1;31m[OFF] "
 			}
 			[[ "$(netstat -tlpn | grep 'openvpn' | wc -l)" != '0' ]] && {
-				echo -e "   \033[1;33mOPENVPN: \033[1;37m$(netstat -nplt | grep 'openvpn' | awk {'print $4'} | cut -d: -f2 | xargs)"
+				echo -e "   \033[1;33mOPENVPN: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'openvpn' | awk {'print $4'} | cut -d: -f2 | xargs)"
 				sts5="\033[1;32m[ON] "
 			} || {
 				sts5="\033[1;31m[OFF] "
 			}
 			[[ "$(netstat -tlpn | grep 'python' | wc -l)" != '0' ]] && {
-				echo -e "   \033[1;33mPROXY SOCKS: \033[1;37m$(netstat -nplt | grep 'python' | awk {'print $4'} | cut -d: -f2 | xargs)"
+				echo -e "   \033[1;33mPROXY SOCKS: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'python' | awk {'print $4'} | cut -d: -f2 | xargs)"
 				sts4="\033[1;32m[ON] "
 			} || {
 				sts4="\033[1;31m[OFF] "
 			}
 			[[ -e "/etc/stunnel/stunnel.conf" ]] && {
-				echo -e "   \033[1;33mSSL TUNNEL: \033[1;37m$(netstat -nplt | grep 'stunnel' | awk {'print $4'} | cut -d: -f2 | xargs)"
+				echo -e "   \033[1;33mSSL TUNNEL: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'stunnel' | awk {'print $4'} | cut -d: -f2 | xargs)"
 				sts3="\033[1;32m[ON] "
 			} || {
 				sts3="\033[1;31m[OFF] "
 			}
 			[[ "$(netstat -tlpn | grep 'dropbear' | wc -l)" != '0' ]] && {
-				echo -e "   \033[1;33mDROPBEAR: \033[1;37m$(netstat -nplt | grep 'dropbear' | awk -F ":" {'print $4'} | xargs)"
+				echo -e "   \033[1;33mDROPBEAR: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'dropbear' | awk -F ":" {'print $4'} | xargs)"
 				sts2="\033[1;32m[ON] "
 			} || {
 				sts2="\033[1;31m[OFF] "
 			}
 			[[ "$(netstat -tlpn | grep 'squid' | wc -l)" != '0' ]] && {
-				echo -e "   \033[1;33mSQUID: \033[1;37m$(netstat -nplt | grep 'squid' | awk -F ":" {'print $4'} | xargs)"
+				echo -e "   \033[1;33mSQUID: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'squid' | awk -F ":" {'print $4'} | xargs)"
 				sts1="\033[1;32m[ON] "
 			} || {
 				sts1="\033[1;31m[OFF] "
 			}
 			[[ "$(netstat -tlpn | grep 'WebSocket' | wc -l)" != '0' ]] && {
-				echo -e "   \033[1;33mSECURITY: \033[1;37m$(netstat -nplt | grep 'WebSocket' | awk -F ":" {'print $4'} | xargs)"
+				echo -e "   \033[1;33mSECURITY: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'WebSocket' | awk -F ":" {'print $4'} | xargs)"
 				security1="\033[1;32m[ON] "
 			} || {
 				security1="\033[1;31m[OFF] "
@@ -2224,13 +2224,13 @@ exit 0' >$RCLOCAL
 			}
             [[ $(netstat -nplt | grep -wc 'v2ray') != '0' ]] && {
 			sks='\033[1;32m[ON]'
-			echo -e "   \033[1;33mV2RAY: \033[1;37m$(netstat -nplt | grep 'v2ray' | awk {'print $4'} | cut -d: -f2 | xargs)"
+			echo -e "   \033[1;33mV2RAY: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'v2ray' | awk {'print $4'} | cut -d: -f2 | xargs)"
 	    	} || {
 			sks='\033[1;31m[OFF]'
 		    }
             [[ $(netstat -nplt | grep -wc 'proxy') != '0' ]] && {
 			proxy1='\033[1;32m[ON]'
-			echo -e "   \033[1;33mPROXY-PRO: \033[1;37m$(netstat -nplt | grep 'proxy' | awk {'print $4'} | cut -d: -f2 | xargs)"
+			echo -e "   \033[1;33mPROXY-PRO: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'proxy' | awk {'print $4'} | cut -d: -f2 | xargs)"
 		    } || {
 			proxy1='\033[1;31m[OFF]'
 		    }
