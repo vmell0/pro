@@ -1767,9 +1767,6 @@ exit 0' >$RCLOCAL
 			;;
 		0 | 00)
 		clear
-		echo ""
-		echo -e "\033[1;33mVOLTANDO...\033[0m"
-		sleep 1
 		fun_socks
 		;;
 		*)
@@ -1954,9 +1951,6 @@ exit 0' >$RCLOCAL
 		;;
 		0 | 00)
 		clear
-		echo ""
-		echo -e "\033[1;33mVOLTANDO...\033[0m"
-		sleep 1
 		fun_socks
 		;;
 		*)
@@ -2025,9 +2019,6 @@ exit 0' >$RCLOCAL
 		;;
 		0 | 00)
 		clear
-		echo ""
-		echo -e "\033[1;33mVOLTANDO...\033[0m"
-		sleep 1
 		fun_conexao
 		;;
 		*)
