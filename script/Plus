@@ -85,7 +85,6 @@ otimize_python() {
 
 otimize_dep() {
     # INSTALA ALGUMAS DEPENDENCIAS
-    pip3 install asn1crypto attrs Automat blinker click colorama configobj constantly distro-info httplib2 hyperlink incremental Jinja2 jsonpatch jsonpointer jsonschema keyring keyrings.alt MarkupSafe oauthlib PAM pexpect pip pyasn1 pyasn1-modules pycrypto PyJWT pyserial pyxdg PyYAML requests requests-unixsocket SecretStorage service-identity setuptools six sos ssh-import-id Twisted urllib3 wheel zope.interface && curl -4 ifconfig.co > /etc/IP
     pip install speedtest-cli && pip3 install speedtest-cli
 }
 
