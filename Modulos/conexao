@@ -2191,7 +2191,7 @@ exit 0' >$RCLOCAL
 			} || {
 				sts4="\033[1;31m[OFF] "
 			}
-			[[ "$(netstat -tlpn | grep 'stunnel' | wc -l)" != '0' ]] && {
+			[[ -e "/etc/stunnel/stunnel.conf" ]] && {
 				echo -e "   \033[1;33mSSL TUNNEL: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'stunnel' | awk {'print $4'} | cut -d: -f2 | xargs)"
 				sts3="\033[1;32m[ON] "
 			} || {
