@@ -1975,10 +1975,10 @@ exit 0' >$RCLOCAL
 				sts2="\033[1;31m[OFF] "
 			}
 		[[ "$(netstat -tlpn | grep 'WebSocket' | wc -l)" != '0' ]] && {
-				echo -e "   \033[1;33mSECURITY: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'WebSocket' | awk {'print $4'} | cut -d: -f2 | xargs)"
-				sts3="\033[1;32m[ON] "
+				echo -e "   \033[1;33mSECURITY: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'WebSocket' | awk -F ":" {'print $4'} | xargs)"
+				security1="\033[1;32m[ON] "
 			} || {
-				sts3="\033[1;31m[OFF] "
+				security1="\033[1;31m[OFF] "
 			}
 		[[ "$(netstat -tlpn | grep 'proxy' | wc -l)" != '0' ]] && {
 				echo -e "   \033[1;33mPROXY-PRO: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'proxy' | awk {'print $4'} | cut -d: -f2 | xargs)"
@@ -1989,7 +1989,7 @@ exit 0' >$RCLOCAL
 		echo -e "\033[0;36m° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° °\033[0m"
 		echo -e "   \033[1;31m[\033[1;36m01\033[1;31m] \033[1;37m• \033[1;37mPROXY SOCKS $sts1\033[0m"
 		echo -e "   \033[1;31m[\033[1;36m02\033[1;31m] \033[1;37m• \033[1;37mWEBSOCKET $sts2\033[0m"
-		echo -e "   \033[1;31m[\033[1;36m03\033[1;31m] \033[1;37m• \033[1;37mSECURITY $sts3\033[0m"
+		echo -e "   \033[1;31m[\033[1;36m03\033[1;31m] \033[1;37m• \033[1;37mSECURITY $security1\033[0m"
 		echo -e "   \033[1;31m[\033[1;36m04\033[1;31m] \033[1;37m• \033[1;37mPROXY-PRO $sts4\033[0m"
 		echo -e "   \033[1;31m[\033[1;36m00\033[1;31m] \033[1;37m• \033[1;37mVOLTAR\033[0m"
 		echo -e "\033[0;36m╚═════════════════════•⊱✦⊰•═════════════════════╝\033[0m"
