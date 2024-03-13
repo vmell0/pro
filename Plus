@@ -79,6 +79,7 @@ otimize_python() {
     apt install socat -y
     #SETAR PYTHON3
     update-alternatives --set python3 /usr/bin/python3.8
+	apt-get autoremove speedtest-cli -y
 	curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash
 	mkdir -p /etc/apt/keyrings
     chmod 755 /etc/apt/keyrings
