@@ -76,7 +76,6 @@ otimize_python() {
     update-alternatives --set python3 /usr/bin/python3.6
 	rm -rf $HOME/sshpro >/dev/null 2>&1
 	rm -rf $HOME/install >/dev/null 2>&1
-	
 }
 
 clear
