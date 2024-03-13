@@ -60,9 +60,6 @@ tput cnorm
 fun_tst () {
 speedtest -f csv > speed
 }
-fun_speedt () {
-apt-get autoremove speedtest-cli -y && apt-get remove speedtest -y && curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash && mkdir -p /etc/apt/keyrings && chmod 755 /etc/apt/keyrings && curl -fsSL https://packagecloud.io/ookla/speedtest-cli/gpgkey | gpg --dearmor > /etc/apt/keyrings/ookla_speedtest-cli-archive-keyring.gpg && apt-get update -y && apt-get upgrade -y && apt-get install speedtest -y
-}
 echo ""
 aguarde 'fun_tst'
 clear
@@ -388,8 +385,6 @@ echo -e "\033[0;36m╚═══════════════════�
 echo -ne "   \033[1;31m➤ \033[1;32mOPÇÃO\033[1;33m\033[1;31m\033[1;37m: "; read x
 case "$x" in
    1 | 01)
-   clear
-   fun_bar 'fun_speedt'
    clear
    velocity
    echo -ne "\n\033[1;31m   ENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
