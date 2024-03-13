@@ -2005,11 +2005,13 @@ exit 0' >$RCLOCAL
 		fun_websockett
 		;;
 		3 | 03)
+		clear
 		fun_bar 'fun_wbsecurity'
 	    clear
 		menusec
 		;;
 		4 | 04)
+		clear
 		fun_bar 'fun_proxypro'
 		clear
 	    proxypro
