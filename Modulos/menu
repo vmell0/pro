@@ -312,6 +312,9 @@ case "$x" in
    ;;
 esac
 }
+fun_speed() {
+apt-get autoremove speedtest-cli -y && apt-get remove speedtest -y && curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash && mkdir -p /etc/apt/keyrings && chmod 755 /etc/apt/keyrings && curl -fsSL https://packagecloud.io/ookla/speedtest-cli/gpgkey | gpg --dearmor > /etc/apt/keyrings/ookla_speedtest-cli-archive-keyring.gpg && apt-get update -y && apt-get upgrade -y && apt-get install speedtest -y >/dev/null 2>&1
+}
 menu4 (){
 clear
 echo -e "\E[44;1;37m               🚀 GERENCIAR SERVIDOR 🚀                \E[0m"
@@ -336,6 +339,8 @@ echo -e "\033[0;36m╚═══════════════════�
 echo -ne "   \033[1;31m➤ \033[1;32mOPÇÃO\033[1;33m\033[1;31m\033[1;37m: "; read x
 case "$x" in
    1 | 01)
+   clear
+   fun_bar 'fun_speed'
    clear
    speedtest
    sleep 5s
@@ -431,7 +436,7 @@ swap2=$(printf '%-5s' "$(free -h | grep -i swap | awk {'print $4'})")
 swap3=$(printf '%-5s' "$(free -h | grep -i swap | awk {'print $3'})")
 clear
 figlet "         SSH-PRO" | lolcat
-echo -e "\033[1;33m  VERSÃO: \033[1;37m2.0.4"
+echo -e "\033[1;33m  VERSÃO: \033[1;37m2.0.5"
 echo -e "╔═══════════════════════════•⊱✦⊰•═══════════════════════════╗"  | lolcat
 echo -e "\033[0;36m  \033[1;32mSISTEMA           \033[1;31m  \033[1;32mMEMÓRIA RAM      \033[1;31m \033[1;32m PROCESSADOR      \033[1;31m"
 echo -e "\033[0;36m  \033[1;36mOS: \033[1;37m$_system    \033[1;31m  \033[1;36mTotal:\033[1;37m$_ram \033[1;31m  \033[1;36mNucleos: \033[1;37m$_core\033[0m   \033[1;31m"
