@@ -1,12 +1,5 @@
 #!/bin/bash
 #===================================================
-#   SCRIPT: BOT SSH PLUS
-#   DATA ATT: 18 de JuL 2022
-#   DESENVOLVIDO POR: TURBONETPN2023
-#   API SHELLBOT: ORION
-#   CONTATO TELEGRAM: http://t.me/TURBONET2023
-#   CANAL TELEGRAM: http://t.me/TURBONET2023
-#===================================================
 [[ ! -d /etc/SSHPlus ]] && exit 0
 [[ ! -d /etc/bot ]] && exit 0
 source ShellBot.sh
