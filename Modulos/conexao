@@ -1960,7 +1960,7 @@ exit 0' >$RCLOCAL
 	}
 	fun_socks() {
 		clear
-		echo -e "\E[44;1;37m                  🚀 PROXY 🚀                    \E[0m"
+		echo -e "\E[44;1;37m                🚀 MODO PROXY 🚀                  \E[0m"
         echo -e "\033[0;36m╔═════════════════════•⊱✦⊰•═════════════════════╗\033[0m"
 		[[ "$(netstat -tlpn | grep 'python' | wc -l)" != '0' ]] && {
 				echo -e "   \033[1;33mPROXY SOCKS: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'python' | awk {'print $4'} | cut -d: -f2 | xargs)"
