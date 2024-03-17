@@ -49,9 +49,17 @@ SCOLOR='\033[0m'
 				fun_conexao
 			}
 		done
-	}	
+	}
+    fun_ssl() {
+    cd /etc/SSHPlus/
+    rm cert.pem
+	wget https://raw.githubusercontent.com/xzlordzx/sshpro/main/cert
+	mv cert cert.pem
+	chmod 777 cert.pem
+	cd
+    }	
 	fun_proxypro () {
-	rm -rf /usr/bin/proxypro && curl -s -L -o /usr/bin/proxypro https://github.com/xzlordzx/sshpro/raw/main/proxypro && chmod +x /usr/bin/proxypro
+	rm -rf /usr/bin/proxypro && curl -s -L -o /usr/bin/proxypro https://github.com/xzlordzx/sshpro/raw/main/proxypro && chmod +x /usr/bin/proxypro && fun_ssl
 	}
 	fun_wbsecurity () {
 	rm -rf /usr/bin/menusec && curl -s -L -o /usr/bin/menusec https://github.com/xzlordzx/sshpro/raw/main/menusec && chmod +x /usr/bin/menusec
