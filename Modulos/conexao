@@ -1813,7 +1813,7 @@ exit 0' >$RCLOCAL
 				echo ""
 				echo -e "\033[1;32mWEBSOCKET DESATIVADO COM SUCESSO!\033[1;33m"
 				sleep 3
-				fun_socks
+				fun_websockett
 			else
 				clear
 				echo -e "\E[44;1;37m             WEBSOCKET              \E[0m"
@@ -1825,7 +1825,7 @@ exit 0' >$RCLOCAL
 					echo -e "\033[1;31mPorta invalida!"
 					sleep 3
 					clear
-					fun_socks
+					fun_websockett
 				}
 				verif_ptrs $porta
 				fun_iniwssocks() {
@@ -1845,7 +1845,7 @@ exit 0' >$RCLOCAL
 				echo ""
 				echo -e "\033[1;32WSSOCKS ATIVADO COM SUCESSO\033[1;33m"
 				sleep 3
-				fun_socks
+				fun_websockett
 			fi
 		;;
 		2 | 02)
