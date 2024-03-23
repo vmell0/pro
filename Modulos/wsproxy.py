@@ -1,13 +1,6 @@
 #!/usr/bin/env python
 # encoding: utf-8
-# WebSocket @TURBONET2023
 import socket, threading, thread, select, signal, sys, time, getopt
-MSG = 'WebSocket'
-COR = '<font color="null">'
-FTAG = '</font>'
-MSx = 'WEBSOCKET-SECURITY'
-COx = '<font color="#00FFFF">'
-FTAx = '</font>'
 
 PASS = ''
 LISTENING_ADDR = '0.0.0.0'
@@ -15,10 +8,13 @@ try:
    LISTENING_PORT = int(sys.argv[1])
 except:
    LISTENING_PORT = 80
-BUFLEN = 8196 * 8
+BUFLEN = 4096 * 4
 TIMEOUT = 60
+MSG = ''
+COR = '<font color="null">'
+FTAG = '</font>'
 DEFAULT_HOST = "127.0.0.1:22"
-RESPONSE = 'HTTP/1.1 101 '+str(COR)+str(MSG)+str(FTAG)+' \r\n\r\n'
+RESPONSE = "HTTP/1.1 101 " + str(COR) + str(MSG) + str(FTAG) + "\r\n\r\n"
  
 class Server(threading.Thread):
     def __init__(self, host, port):
