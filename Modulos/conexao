@@ -1847,103 +1847,6 @@ exit 0' >$RCLOCAL
 				fun_websockett
 			fi
 		;;
-		000002 | 00000002)
-		clear
-		if ps x | grep -w wsproxy.py | grep -v grep 1>/dev/null 2>/dev/null; then
-				clear
-				msgsocks=$(cat /etc/SSHPlus/wsproxy.py | grep -E "MSG =" | awk -F = '{print $2}' | cut -d "'" -f 2)
-				echo -e "\E[44;1;37m             WEBSOCKET              \E[0m"
-				echo ""
-				echo -e "\033[1;33mSTATUS: \033[1;32m$msgsocks"
-				echo""
-				echo -ne "\033[1;32mINFORME SEU STATUS\033[1;31m:\033[1;37m "
-				read msgg
-				[[ -z "$msgg" ]] && {
-					echo -e "\n\033[1;31mStatus invalido!"
-					sleep 2
-					fun_websockett
-				}
-				[[ ${msgg} != ?(+|-)+([a-zA-Z0-9-. ]) ]] && {
-					echo -e "\n\033[1;31m[\033[1;33m!\033[1;31m]\033[1;33m EVITE CARACTERES ESPECIAIS\033[0m"
-					sleep 2
-					fun_websockett
-				}
-				echo -e "\n\033[1;31m[\033[1;36m01\033[1;31m]\033[1;33m AZUL"
-				echo -e "\033[1;31m[\033[1;36m02\033[1;31m]\033[1;33m VERDE"
-				echo -e "\033[1;31m[\033[1;36m03\033[1;31m]\033[1;33m VERMELHO"
-				echo -e "\033[1;31m[\033[1;36m04\033[1;31m]\033[1;33m AMARELO"
-				echo -e "\033[1;31m[\033[1;36m05\033[1;31m]\033[1;33m ROSA"
-				echo -e "\033[1;31m[\033[1;36m06\033[1;31m]\033[1;33m CYANO"
-				echo -e "\033[1;31m[\033[1;36m07\033[1;31m]\033[1;33m LARANJA"
-				echo -e "\033[1;31m[\033[1;36m08\033[1;31m]\033[1;33m ROXO"
-				echo -e "\033[1;31m[\033[1;36m09\033[1;31m]\033[1;33m PRETO"
-				echo -e "\033[1;31m[\033[1;36m10\033[1;31m]\033[1;33m SEM COR"
-				echo ""
-				echo -ne "\033[1;32mQUAL A COR\033[1;31m ?\033[1;37m : "
-				read sts_cor
-				if [[ "$sts_cor" = "1" ]] || [[ "$sts_cor" = "01" ]]; then
-					cor_sts='blue'
-				elif [[ "$sts_cor" = "2" ]] || [[ "$sts_cor" = "02" ]]; then
-					cor_sts='green'
-				elif [[ "$sts_cor" = "3" ]] || [[ "$sts_cor" = "03" ]]; then
-					cor_sts='red'
-				elif [[ "$sts_cor" = "4" ]] || [[ "$sts_cor" = "04" ]]; then
-					cor_sts='yellow'
-				elif [[ "$sts_cor" = "5" ]] || [[ "$sts_cor" = "05" ]]; then
-					cor_sts='#F535AA'
-				elif [[ "$sts_cor" = "6" ]] || [[ "$sts_cor" = "06" ]]; then
-					cor_sts='cyan'
-				elif [[ "$sts_cor" = "7" ]] || [[ "$sts_cor" = "07" ]]; then
-					cor_sts='#FF7F00'
-				elif [[ "$sts_cor" = "8" ]] || [[ "$sts_cor" = "08" ]]; then
-					cor_sts='#9932CD'
-				elif [[ "$sts_cor" = "9" ]] || [[ "$sts_cor" = "09" ]]; then
-					cor_sts='black'
-				elif [[ "$sts_cor" = "10" ]]; then
-					cor_sts='null'
-				else
-					echo -e "\n\033[1;33mOPCAO INVALIDA !"
-					cor_sts='null'
-				fi
-				fun_msgsocks() {
-					msgsocks2=$(cat /etc/SSHPlus/wsproxy.py | grep "MSG =" | awk -F = '{print $2}')
-					sed -i "s/$msgsocks2/ '$msgg'/g" /etc/SSHPlus/wsproxy.py
-					sleep 1
-					cor_old=$(grep 'color=' /etc/SSHPlus/wsproxy.py | cut -d '"' -f2)
-					sed -i "s/\b$cor_old\b/$cor_sts/g" /etc/SSHPlus/wsproxy.py
-				}
-				echo ""
-				echo -e "\033[1;32mALTERANDO STATUS!"
-				echo ""
-				fun_bar 'fun_msgsocks'
-                restartwssocks() {
-                    if ps x | grep wsproxy.py | grep -v grep 1>/dev/null 2>/dev/null; then
-						echo -e "$(netstat -nplt | grep 'python' | awk {'print $4'} | cut -d: -f2 | xargs)" >/tmp/Pt_wssks
-						for pidproxy in $(screen -ls | grep ".ws" | awk {'print $1'}); do
-							screen -r -S "$pidproxy" -X quit
-						done
-						screen -wipe >/dev/null
-						_Ptwssks="$(cat /tmp/Pt_wssks)"
-						sleep 1
-						screen -dmS ws python /etc/SSHPlus/wsproxy.py $_Ptwssks
-						rm /tmp/Pt_wssks
-					fi
-				}
-				echo ""
-				echo -e "\033[1;32mREINICIANDO WEBSOCKET!"
-				echo ""
-				fun_bar 'restartwssocks'
-				echo ""
-				echo -e "\033[1;32mSTATUS ALTERADO COM SUCESSO!"
-				sleep 2
-				fun_websockett
-			else
-				clear
-				echo -e "\033[1;31mFUNCAO INDISPONIVEL\n\n\033[1;33mATIVE O WEBSOCKET PRIMEIRO !\033[1;33m"
-				sleep 2
-				fun_websockett
-			fi
-		;;
 		0 | 00)
 		clear
 		fun_socks
@@ -1957,6 +1860,8 @@ exit 0' >$RCLOCAL
 	}
 	fun_socks() {
 		clear
+		[[ $(screen -list | grep -wc 'proxy') != '0' ]] && wspro="\033[1;32m[ON]" || wspro="\033[1;31m[OFF]"
+		[[ $(screen -list | grep -wc 'proxy3') != '0' ]] && wspro="\033[1;32m[ON]" || wspro="\033[1;31m[OFF]"
 		echo -e "\E[44;1;37m                🚀 MODO PROXY 🚀                  \E[0m"
         echo -e "\033[0;36m╔═════════════════════•⊱✦⊰•═════════════════════╗\033[0m"
 		[[ "$(netstat -tlpn | grep 'python' | wc -l)" != '0' ]] && {
@@ -1985,7 +1890,7 @@ exit 0' >$RCLOCAL
 			}
 		echo -e "\033[0;36m° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° °\033[0m"
 		echo -e "   \033[1;31m[\033[1;36m01\033[1;31m] \033[1;37m• \033[1;37mPROXY SOCKS $sts1\033[0m"
-		echo -e "   \033[1;31m[\033[1;36m02\033[1;31m] \033[1;37m• \033[1;37mWEBSOCKET $sts2\033[0m"
+		echo -e "   \033[1;31m[\033[1;36m02\033[1;31m] \033[1;37m• \033[1;37mWEBSOCKET $wspro\033[0m"
 		echo -e "   \033[1;31m[\033[1;36m03\033[1;31m] \033[1;37m• \033[1;37mSECURITY $security1\033[0m"
 		echo -e "   \033[1;31m[\033[1;36m04\033[1;31m] \033[1;37m• \033[1;37mPROXY-PRO $sts4\033[0m"
 		echo -e "   \033[1;31m[\033[1;36m00\033[1;31m] \033[1;37m• \033[1;37mVOLTAR\033[0m"
