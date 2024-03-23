@@ -1870,11 +1870,11 @@ exit 0' >$RCLOCAL
 			} || {
 				sts1="\033[1;31m[OFF] "
 			}
-		[[ "$(netstat -tlpn | grep 'proxy3' | wc -l)" != '0' ]] && {
-				echo -e "   \033[1;33mWEBSOCKET: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'proxy3' | awk -F ":" {'print $4'} | xargs"
-				sts2="\033[1;32m[ON] "
+        [[ "$(netstat -tlpn | grep 'proxy3' | wc -l)" != '0' ]] && {
+				echo -e "   \033[1;33mWEBSOCKET: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'proxy3' | awk -F ":" {'print $4'} | xargs)"
+				sts1="\033[1;32m[ON] "
 			} || {
-				sts2="\033[1;31m[OFF] "
+				sts1="\033[1;31m[OFF] "
 			}
 		[[ "$(netstat -tlpn | grep 'WebSocket' | wc -l)" != '0' ]] && {
 				echo -e "   \033[1;33mSECURITY: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'WebSocket' | awk -F ":" {'print $4'} | xargs)"
