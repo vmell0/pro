@@ -1893,7 +1893,7 @@ exit 0' >$RCLOCAL
 			clear
 			[[ $(screen -list | grep -wc 'proxy1') != '0' ]] && sks02="\033[1;32m[ON]" || sks02="\033[1;31m[OFF]"
 		    [[ $(screen -list | grep -wc 'proxy2') != '0' ]] && sks04="\033[1;32m[ON]" || sks2="\033[1;31m[OFF]"
-echo -e "\E[44;1;37m                🚀 CONEXÕES 🚀                     \E[0m"
+echo -e "\E[44;1;37m                   🚀 CONEXÕES 🚀                       \E[0m"
 echo -e "╔═══════════════════════════•⊱✦⊰•═══════════════════════════╗"  | lolcat
 echo -e "   \033[1;33mOPENSSH: \033[1;32mPORTA: \033[1;37m$(grep 'Port' /etc/ssh/sshd_config | cut -d' ' -f2 | grep -v 'no' | xargs)" && sks01="\033[1;32m[ON] "
 			[[ "$(ps x | grep 'slowdns' | grep -v 'grep' | wc -l)" != '0' ]] && {
