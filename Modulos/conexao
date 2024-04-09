@@ -1892,51 +1892,45 @@ exit 0' >$RCLOCAL
 			[[ ! -e '/home/sshplus' ]] && exit 0
 			clear
 			[[ $(screen -list | grep -wc 'proxy1') != '0' ]] && sks02="\033[1;32m[ON]" || sks02="\033[1;31m[OFF]"
-		    [[ $(screen -list | grep -wc 'proxy2') != '0' ]] && sks04="\033[1;32m[ON]" || sks2="\033[1;31m[OFF]"
-echo -e "\E[44;1;37m                   🚀 CONEXÕES 🚀                       \E[0m"
+		    [[ $(screen -list | grep -wc 'proxy2') != '0' ]] && sks04="\033[1;32m[ON]" || sks04="\033[1;31m[OFF]"
+echo -e "\E[44;1;37m                      🚀 CONEXÕES 🚀                       \E[0m"
 echo -e "╔═══════════════════════════•⊱✦⊰•═══════════════════════════╗"  | lolcat
-echo -e "   \033[1;33mOPENSSH: \033[1;32mPORTA: \033[1;37m$(grep 'Port' /etc/ssh/sshd_config | cut -d' ' -f2 | grep -v 'no' | xargs)" && sks01="\033[1;32m[ON] "
-			[[ "$(ps x | grep 'slowdns' | grep -v 'grep' | wc -l)" != '0' ]] && {
-			    echo -e "   \033[1;33mSLOWDNS: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'slowdns' | awk {'print $4'} | cut -d: -f2 | xargs)"
-				sts9="\033[1;32m[ON] "
-			} || {
-				sts9="\033[1;31m[OFF] "
-			}            
+echo -e " \033[1;33mOPENSSH: \033[1;32mPORTA: \033[1;37m$(grep 'Port' /etc/ssh/sshd_config | cut -d' ' -f2 | grep -v 'no' | xargs)" && sks01="\033[1;32m[ON] "          
 			[[ "$(netstat -tlpn | grep 'sslh' | wc -l)" != '0' ]] && {
 				echo -e "   \033[1;33mSSLH: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'sslh' | awk {'print $4'} | cut -d: -f2 | xargs)"
-				sts09="\033[1;32m[ON] "
+				sks09="\033[1;32m[ON] "
 			} || {
-				sts09="\033[1;31m[OFF] "
+				sks09="\033[1;31m[OFF] "
 			}
 			[[ "$(netstat -tlpn | grep 'openvpn' | wc -l)" != '0' ]] && {
 				echo -e "   \033[1;33mOPENVPN: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'openvpn' | awk {'print $4'} | cut -d: -f2 | xargs)"
-				sts06="\033[1;32m[ON] "
+				sks06="\033[1;32m[ON] "
 			} || {
-				sts06="\033[1;31m[OFF] "
+				sks06="\033[1;31m[OFF] "
 			}
 			[[ "$(netstat -tlpn | grep 'python' | wc -l)" != '0' ]] && {
 				echo -e "   \033[1;33mSOCKS/WEBSOCKET: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'python' | awk {'print $4'} | cut -d: -f2 | xargs)"
-				sts4="\033[1;32m[ON] "
+				sks400="\033[1;32m[ON] "
 			} || {
-				sts4="\033[1;31m[OFF] "
+				sks400="\033[1;31m[OFF] "
 			}
 			[[ -e "/etc/stunnel/stunnel.conf" ]] && {
 				echo -e "   \033[1;33mSSL TUNNEL: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'stunnel' | awk {'print $4'} | cut -d: -f2 | xargs)"
-				sts07="\033[1;32m[ON] "
+				sks07="\033[1;32m[ON] "
 			} || {
-				sts07="\033[1;31m[OFF] "
+				sks07="\033[1;31m[OFF] "
 			}
 			[[ "$(netstat -tlpn | grep 'dropbear' | wc -l)" != '0' ]] && {
 				echo -e "   \033[1;33mDROPBEAR: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'dropbear' | awk -F ":" {'print $4'} | xargs)"
-				sts05="\033[1;32m[ON] "
+				sks05="\033[1;32m[ON] "
 			} || {
-				sts05="\033[1;31m[OFF] "
+				sks05="\033[1;31m[OFF] "
 			}
 			[[ "$(netstat -tlpn | grep 'squid' | wc -l)" != '0' ]] && {
 				echo -e "   \033[1;33mSQUID: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'squid' | awk -F ":" {'print $4'} | xargs)"
-				sts03="\033[1;32m[ON] "
+				sks03="\033[1;32m[ON] "
 			} || {
-				sts03="\033[1;31m[OFF] "
+				sks03="\033[1;31m[OFF] "
 			}
 			[[ "$(netstat -tlpn | grep 'WebSocket' | wc -l)" != '0' ]] && {
 				echo -e "   \033[1;33mSECURITY: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'WebSocket' | awk -F ":" {'print $4'} | xargs)"
@@ -1962,11 +1956,11 @@ echo -e "   \033[1;33mOPENSSH: \033[1;32mPORTA: \033[1;37m$(grep 'Port' /etc/ssh
 			sks11='\033[1;31m[OFF]'
 		    }
 echo -e "\033[0;36m° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° °\033[0m"
-echo -e "\033[0;31m [\033[1;36m01\033[0;31m] \033[1;37m• \033[1;37mOPENSSH sks01\033[0;31m            [\033[1;36m08\033[0;31m] \033[1;37m• \033[1;37mV2RAY $sks08\033[1;31m
+echo -e "\033[0;31m [\033[1;36m01\033[0;31m] \033[1;37m• \033[1;37mOPENSSH $sks01\033[0;31m                        [\033[1;36m08\033[0;31m] \033[1;37m• \033[1;37mV2RAY $sks08\033[1;31m
 \033[0;31m [\033[1;36m02\033[0;31m] \033[1;37m• \033[1;37mPROXY SOCKS $sks02\033[0;31m                    [\033[1;36m09\033[0;31m] \033[1;37m• \033[1;37mSSL MULTIPLEX $sks09\033[1;31m
 \033[0;31m [\033[1;36m03\033[0;31m] \033[1;37m• \033[1;37mPROXY SQUID $sks03\033[0;31m                    [\033[1;36m10\033[0;31m] \033[1;37m• \033[1;37mSECURITY $sks10\033[1;31m
 \033[0;31m [\033[1;36m04\033[0;31m] \033[1;37m• \033[1;37mWEBSOCKET $sks04\033[0;31m                      [\033[1;36m11\033[0;31m] \033[1;37m• \033[1;37mPROXY PRO $sks11\033[0;31m
-\033[0;31m [\033[1;36m05\033[0;31m] \033[1;37m• \033[1;37mDROPBEAR $sks05\033[0;31m                       [\033[1;36m00\033[0;31m] \033[1;37m• \033[1;37mVOLTAR  \033[1;32m<\033[1;33m<\033[1;31m< \033[0m
+\033[0;31m [\033[1;36m05\033[0;31m] \033[1;37m• \033[1;37mDROPBEAR $sks05\033[0;31m                       [\033[1;36m00\033[0;31m] \033[1;37m• \033[1;37mVOLTAR  \033[1;32m<\033[1;33m<\033[1;31m<\033[0;31m
 \033[0;31m [\033[1;36m06\033[0;31m] \033[1;37m• \033[1;37mOPENVPN $sks06\033[0;31m
 \033[0;31m [\033[1;36m07\033[0;31m] \033[1;37m• \033[1;37mSSL TUNNEL $sks07\033[0;31m\033"
 echo -e "╚═══════════════════════════•⊱✦⊰•═══════════════════════════╝" | lolcat
