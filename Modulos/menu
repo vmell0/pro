@@ -650,7 +650,8 @@ case "$x" in
    menu4
    ;;
    9 | 09)
-   menubad
+   clear
+   fun_bad7300
    ;;
    10 | 10)
    userbackup
