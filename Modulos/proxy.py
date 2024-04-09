@@ -10,7 +10,7 @@ try:
 except:
    PORT = 80
 PASS = ''
-BUFLEN = 8196 * 8
+BUFLEN = 8000 * 8
 TIMEOUT = 60
 MSG = ''
 COR = '<font color="null">'
