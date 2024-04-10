@@ -185,7 +185,7 @@ SCOLOR='\033[0m'
 			clear
 			[[ $(netstat -nltp | grep -c 'dropbear') != '0' ]] && dpbr=$(netstat -nplt | grep 'dropbear' | awk -F ":" {'print $4'} | xargs) || sqdp="\033[1;31mINDISPONIVEL"
 			if ps x | grep "limiter" | grep -v grep 1>/dev/null 2>/dev/null; then
-				stats='\033[1;32m◉ '
+				stats='\033[1;32m⬤ '
 			else
 				stats='\033[1;31m○ '
 			fi
@@ -366,7 +366,7 @@ SCOLOR='\033[0m'
 			sks='\033[1;31mOFF'
 		}
         [[ "$(netstat -tlpn | grep 'docker' | wc -l)" != '0' ]] && {
-				chiselsts="\033[1;32m◉ "
+				chiselsts="\033[1;32m⬤ "
 			} || {
 				chiselsts="\033[1;31m○ "
 			}
@@ -731,12 +731,12 @@ SCOLOR='\033[0m'
 
 				opnp=$(cat /etc/openvpn/server.conf | grep "port" | awk {'print $2'})
 				[[ -d /var/www/html/openvpn ]] && {
-					ovpnweb=$(echo -e "\033[1;32m◉ ")
+					ovpnweb=$(echo -e "\033[1;32m⬤ ")
 				} || {
 					ovpnweb=$(echo -e "\033[1;31m[OFF] ")
 				}
 				if grep "duplicate-cn" /etc/openvpn/server.conf >/dev/null; then
-					mult=$(echo -e "\033[1;32m◉ ")
+					mult=$(echo -e "\033[1;32m⬤ ")
 				else
 					mult=$(echo -e "\033[1;31m[OFF] ")
 				fi
@@ -1539,69 +1539,69 @@ exit 0' >$RCLOCAL
 		while true $x != "ok"; do
 			[[ ! -e '/home/sshplus' ]] && exit 0
 			clear
-			[[ $(screen -list | grep -wc 'proxy1') != '0' ]] && sks02="\033[1;32m◉" || sks02="\033[1;31m◉"
-		    [[ $(screen -list | grep -wc 'proxy2') != '0' ]] && sks04="\033[1;32m◉" || sks04="\033[1;31m◉"
+			[[ $(screen -list | grep -wc 'proxy1') != '0' ]] && sks02="\033[1;32m⬤" || sks02="\033[1;31m⬤"
+		    [[ $(screen -list | grep -wc 'proxy2') != '0' ]] && sks04="\033[1;32m⬤" || sks04="\033[1;31m⬤"
 echo -e "\E[44;1;37m                     🚀 CONEXÕES 🚀                    \E[0m"
 echo -e "\033[0;36m╔════════════════════════•⊱✦⊰•════════════════════════╗\033[0m"
-echo -e "   \033[1;33mOPENSSH: \033[1;32mPORTA: \033[1;37m$(grep 'Port' /etc/ssh/sshd_config | cut -d' ' -f2 | grep -v 'no' | xargs)" && sks01="\033[1;32m◉"          
+echo -e "   \033[1;33mOPENSSH: \033[1;32mPORTA: \033[1;37m$(grep 'Port' /etc/ssh/sshd_config | cut -d' ' -f2 | grep -v 'no' | xargs)" && sks01="\033[1;32m⬤"          
 			[[ "$(netstat -tlpn | grep 'sslh' | wc -l)" != '0' ]] && {
 				echo -e "   \033[1;33mSSLH: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'sslh' | awk {'print $4'} | cut -d: -f2 | xargs)"
-				sks09="\033[1;32m◉"
+				sks09="\033[1;32m⬤"
 			} || {
-				sks09="\033[1;31m◉"
+				sks09="\033[1;31m⬤"
 			}
 			[[ "$(netstat -tlpn | grep 'openvpn' | wc -l)" != '0' ]] && {
 				echo -e "   \033[1;33mOPENVPN: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'openvpn' | awk {'print $4'} | cut -d: -f2 | xargs)"
-				sks06="\033[1;32m◉"
+				sks06="\033[1;32m⬤"
 			} || {
-				sks06="\033[1;31m◉"
+				sks06="\033[1;31m⬤"
 			}
 			[[ "$(netstat -tlpn | grep 'python' | wc -l)" != '0' ]] && {
 				echo -e "   \033[1;33mSOCKS/WEBSOCKET: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'python' | awk {'print $4'} | cut -d: -f2 | xargs)"
-				sks400="\033[1;32m◉"
+				sks400="\033[1;32m⬤"
 			} || {
-				sks400="\033[1;31m◉"
+				sks400="\033[1;31m⬤"
 			}
 			[[ -e "/etc/stunnel/stunnel.conf" ]] && {
 				echo -e "   \033[1;33mSSL TUNNEL: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'stunnel' | awk {'print $4'} | cut -d: -f2 | xargs)"
-				sks07="\033[1;32m◉"
+				sks07="\033[1;32m⬤"
 			} || {
-				sks07="\033[1;31m◉"
+				sks07="\033[1;31m⬤"
 			}
 			[[ "$(netstat -tlpn | grep 'dropbear' | wc -l)" != '0' ]] && {
 				echo -e "   \033[1;33mDROPBEAR: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'dropbear' | awk -F ":" {'print $4'} | xargs)"
-				sks05="\033[1;32m◉"
+				sks05="\033[1;32m⬤"
 			} || {
-				sks05="\033[1;31m◉"
+				sks05="\033[1;31m⬤"
 			}
 			[[ "$(netstat -tlpn | grep 'squid' | wc -l)" != '0' ]] && {
 				echo -e "   \033[1;33mSQUID: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'squid' | awk -F ":" {'print $4'} | xargs)"
-				sks03="\033[1;32m◉"
+				sks03="\033[1;32m⬤"
 			} || {
-				sks03="\033[1;31m◉"
+				sks03="\033[1;31m⬤"
 			}
 			[[ "$(netstat -tlpn | grep 'WebSocket' | wc -l)" != '0' ]] && {
 				echo -e "   \033[1;33mSECURITY: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'WebSocket' | awk -F ":" {'print $4'} | xargs)"
-				sks10="\033[1;32m◉"
+				sks10="\033[1;32m⬤"
 			} || {
-				sks10="\033[1;31m◉"
+				sks10="\033[1;31m⬤"
 			}
 			[[ "$(netstat -tunlp | grep 'trojan-go' | wc -l)" != '0' ]] && {
-				trojansts="\033[1;32m◉"
+				trojansts="\033[1;32m⬤"
 			} || {
-				trojansts="\033[1;31m◉"
+				trojansts="\033[1;31m⬤"
 			}
             [[ $(netstat -nplt | grep -wc 'v2ray') != '0' ]] && {
-			sks08="\033[1;32m◉"
+			sks08="\033[1;32m⬤"
 			echo -e "   \033[1;33mV2RAY: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'v2ray' | awk {'print $4'} | cut -d: -f2 | xargs)"
 	    	} || {
-			sks08="\033[1;31m◉"
+			sks08="\033[1;31m⬤"
 		    }
             [[ $(netstat -nplt | grep -wc 'proxy') != '0' ]] && {
-			sks11="\033[1;32m◉"
+			sks11="\033[1;32m⬤"
 			echo -e "   \033[1;33mPROXY-PRO: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'proxy' | awk {'print $4'} | cut -d: -f2 | xargs)"
 		    } || {
-			sks11="\033[1;31m◉"
+			sks11="\033[1;31m⬤"
 		    }
 echo -e "\033[0;36m° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° °\033[0m"
 echo -e "\033[0;31m  [\033[1;36m01\033[0;31m] \033[1;37m• \033[1;37mOPENSSH $sks01\033[0;31m                [\033[1;36m08\033[0;31m] \033[1;37m• \033[1;37mV2RAY $sks08\033[1;31m
