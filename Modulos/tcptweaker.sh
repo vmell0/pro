@@ -1,5 +1,5 @@
 #!/bin/bash
-tput setaf 7 ; tput setab 4 ; tput bold ; printf '%35s%s%-20s\n' "TCP Tweaker 1.0" ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; printf '%35s%s%-20s\n' "TCP Tweaker" ; tput sgr0
 if [[ `grep -c "^#PH56" /etc/sysctl.conf` -eq 1 ]]
 then
 	echo ""
@@ -26,7 +26,6 @@ sysctl -p /etc/sysctl.conf > /dev/null
 	fi
 else
 	echo ""
-	echo "Este é um script experimental. Use por sua conta e risco!"
 	echo "Este script irá alterar algumas configurações de rede"
 	echo "do sistema para reduzir a latência e melhorar a velocidade."
 	echo ""
