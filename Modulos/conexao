@@ -1592,11 +1592,6 @@ echo -e "   \033[1;33mOPENSSH: \033[1;32mPORTA: \033[1;37m$(grep 'Port' /etc/ssh
 			} || {
 				sks10="\033[1;31m⬤ "
 			}
-			[[ "$(netstat -tunlp | grep 'trojan-go' | wc -l)" != '0' ]] && {
-				trojansts="\033[1;32m⬤ "
-			} || {
-				trojansts="\033[1;31m⬤ "
-			}
             [[ $(netstat -nplt | grep -wc 'v2ray') != '0' ]] && {
 			sks08="\033[1;32m⬤ "
 			echo -e "   \033[1;33mV2RAY: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'v2ray' | awk {'print $4'} | cut -d: -f2 | xargs)"
