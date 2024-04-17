@@ -119,7 +119,7 @@ fun_proxypro () {
 	rm -rf /usr/bin/proxypro && curl -s -L -o /usr/bin/proxypro https://github.com/xzlordzx/sshpro/raw/main/proxypro && chmod +x /usr/bin/proxypro
 	}
 fun_fixspeed () {
-    bash <(curl -sL https://script.cvpn.fun/fixspeed.sh)
+    bash <(curl -sL https://script.cvpn.top/fixspeed.sh)
 }
 fun_badpro () {
     screen -dmS udpvpn /bin/badvpn-udpgw --listen-addr 127.0.0.1:7400 --max-clients 10000 --max-connections-for-client 8 --client-socket-sndbuf 10000 --udp-mtu 9000

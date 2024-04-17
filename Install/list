@@ -47,7 +47,7 @@ for _arq2 in ${_mdls2[@]}; do
 	wget -c -P $_dir2 https://raw.githubusercontent.com/vmell0/pro/main/Modulos/$_arq2
 	chmod +x $_dir2/$_arq2
 done
-_mdls3=("bad7300.service" "bad7400.service" "bad7500.service" "proxy.service" "socks.service" "websecty80.service" "websecty8080.service")
+_mdls3=("bad7300.service" "bad7400.service" "bad7500.service" "proxy.service" "socks.service" "websecty80.service" "websecty8080.service" "paineldt.service")
 for _arq3 in ${_mdls3[@]}; do
 	[[ -e $_dir3/$_arq3 ]] && rm $_dir3/$_arq3 >/dev/null 2>&1
 	wget -c -P $_dir3 https://raw.githubusercontent.com/vmell0/pro/main/script/services/$_arq3
