@@ -613,6 +613,7 @@ case "$x" in
     pon
     echo
     echo -e "\033[1;32mBACKUP RESTAURADO COM SUCESSO!\033[1;33m"
+	sleep 4
   }
   [[ $rapi = @(n|N) ]] && {
     painelapp_bkp
@@ -627,6 +628,7 @@ case "$x" in
     backmod
     echo
 	echo -e "\033[1;32mBACKUP SERÁ FEITO A CADA 5 HORAS!\033[1;33m"
+	sleep 4
   }
    painelapp_bkp
    ;;
@@ -649,8 +651,9 @@ echo -e "\033[0;36m╔═══════════════════�
 echo -e "\033[0;31m    \033[1;37m FUNCIONA APENAS NO UBUNTU 20\033[0;31m"
 echo -e "\033[0;36m° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° °\033[0m"
 echo -e "\033[0;31m   [\033[1;36m01\033[0;31m] \033[1;37m• \033[1;37mINSTALAR/REMOVER\033[0;31m
-\033[0;31m   [\033[1;36m02\033[0;31m] \033[1;37m• \033[1;37mATIVAR/DESATIVAR $dt_sks\033[0;31m
-\033[0;31m   [\033[1;36m03\033[0;31m] \033[1;37m• \033[1;37mGERENCIAR BACKUP\033[0;31m
+\033[0;31m   [\033[1;36m02\033[0;31m] \033[1;37m• \033[1;37mATIVAR $dt_sks\033[0;31m
+\033[0;31m   [\033[1;36m03\033[0;31m] \033[1;37m• \033[1;37mDESATIVAR $dt_sks\033[0;31m
+\033[0;31m   [\033[1;36m04\033[0;31m] \033[1;37m• \033[1;37mGERENCIAR BACKUP\033[0;31m
 \033[0;31m   [\033[1;36m00\033[0;31m] \033[1;37m• \033[1;37mVOLTAR  \033[1;32m<\033[1;33m<\033[1;31m< \033[0m"
 echo -e "\033[0;36m╚══════════════════════•⊱✦⊰•══════════════════════╝\033[0m"
 echo -ne "   \033[1;31m➤ \033[1;32mOPÇÃO\033[1;33m\033[1;31m\033[1;37m: "; read x
@@ -663,18 +666,6 @@ case "$x" in
    ;;
    2 | 02)
     clear
-	if ps x | grep -w antcrashvpn.sh | grep -v grep 1>/dev/null 2>/dev/null; then
-	clear
-	echo -e "\033[1;32mDESATIVANDO O PAINEL\033[1;33m"
-	echo ""
-	poff
-	sudo systemctl disable --now paineldt.service && sudo systemctl stop paineldt.service && sudo systemctl daemon-reload
-	echo ""
-	echo -e "\033[1;32mPAINEL DESATIVADO COM SUCESSO!\033[1;33m"
-	sleep 3
-	painelapp
-else
-	clear
 	echo -e "\033[1;32mINICIANDO O PAINEL\033[1;33m"
 	echo ""
 	pon
@@ -683,9 +674,19 @@ else
 	echo -e "\033[1;32mPAINEL ATIVADO COM SUCESSO\033[1;33m"
 	sleep 3
     painelapp
-   fi
    ;;
    3 | 03)
+    clear
+	echo -e "\033[1;32mDESATIVANDO O PAINEL\033[1;33m"
+	echo ""
+	poff
+	sudo systemctl disable --now paineldt.service && sudo systemctl stop paineldt.service && sudo systemctl daemon-reload
+	echo ""
+	echo -e "\033[1;32mPAINEL DESATIVADO COM SUCESSO!\033[1;33m"
+	sleep 3
+	painelapp
+    ;;
+   4 | 04)
    clear
    painelapp_bkp
    ;;
