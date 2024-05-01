@@ -764,7 +764,9 @@ case "$x" in
    ;;
    5 | 05)
    clear
+   [[ ! -e speedtest ]] && {
    fun_bar 'fun_fixspeed'
+   }
    clear
    speedtest -p no
    echo -ne "\n\033[1;31m   ENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
