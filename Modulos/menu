@@ -764,7 +764,7 @@ case "$x" in
    ;;
    5 | 05)
    clear
-   [[ ! -e speedtest ]] && {
+   [[ ! -e /usr/bin/speedtest ]] && {
    fun_bar 'fun_fixspeed'
    }
    clear
