@@ -1,0 +1,13 @@
+[Unit]
+Description=Serviço do Script Online
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /etc/systemd/system/cronatlas.sh
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+
