@@ -785,7 +785,10 @@ case "$x" in
    ;;
    10)
    clear
-   bash <(curl -sL https://raw.githubusercontent.com/vmell0/pro/main/CheckDT/install.sh) 
+   [[ ! -e $HOME/check_user ]] && {
+   bash <(curl -sL https://raw.githubusercontent.com/vmell0/pro/main/CheckDT/install.sh)
+   }
+   check
    ;;
    11)
    clear
