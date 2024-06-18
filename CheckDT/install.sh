@@ -25,5 +25,5 @@ chmod 777 /bin/check > /dev/null 2>&1
 addr=$(curl -s icanhazip.com)
 clear
 echo -e "${cyan}CHECKUSER INSTALADO COM SUCESSO.${tag}"
+echo -e ""
 echo -e "\n${cyan}Comando principal: ${branco}check${tag}.${tag}"
-echo -e "\n${cyan}Desenvolvido por: ${branco}@Bruno_VPN${tag}.${tag}"
