@@ -25,7 +25,7 @@ chmod 777 check
 mv check /bin/check > /dev/null 2>&1
 chmod 777 /bin/check > /dev/null 2>&1
 [[ ! -e /bin/checkdt.service ]] && {
-wget -c -P /bin https://raw.githubusercontent.com/vmell0/pro/main/CheckDT/checkdt.service && chmod +x /bin/checkdt.service > /dev/null 2>&1
+wget -c -P /etc/systemd/system https://raw.githubusercontent.com/vmell0/pro/main/CheckDT/checkdt.service && chmod +x /etc/systemd/system/checkdt.service > /dev/null 2>&1
 }
 clear
 echo -e "${cyan}CHECKUSER INSTALADO COM SUCESSO.${tag}"

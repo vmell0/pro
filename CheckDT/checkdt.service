@@ -6,7 +6,7 @@ After=network.target
 Type=simple
 User=root
 WorkingDirectory=/root
-ExecStart=/bin/check $porta
+ExecStart=pm2 start $HOME/check_user/index.js
 Restart=always
 
 [Install]
