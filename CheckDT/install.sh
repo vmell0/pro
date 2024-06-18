@@ -22,7 +22,6 @@ wget https://raw.githubusercontent.com/vmell0/pro/CheckDT/main/check > /dev/null
 chmod 777 check
 mv check /bin/check > /dev/null 2>&1
 chmod 777 /bin/check > /dev/null 2>&1
-addr=$(curl -s icanhazip.com)
 clear
 echo -e "${cyan}CHECKUSER INSTALADO COM SUCESSO.${tag}"
 echo -e ""
