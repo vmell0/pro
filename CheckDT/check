@@ -12,7 +12,7 @@ menu() {
   status=$(pm2 list | grep -o "online\|stopped")
 
   if [[ $status == "online" ]]; then
-  status="${verde}http://'$addr':'$porta'${tag}"
+  status="${verde}http://$addr:$porta ${tag}"
   else
   status="${vermelho}DESLIGADO${tag}"
   fi
@@ -62,6 +62,7 @@ start_check_user() {
       jq --arg porta "$porta" '.listen_port = $porta' $HOME/check_user/config.json > temp.json && mv temp.json $HOME/check_user/config.json
       echo -e "\n${cyan}Iniciando checkuser na porta $porta${tag}"
       pm2 start $HOME/check_user/index.js >/dev/null
+	  sudo systemctl enable checkdt.service && sudo systemctl start checkdt.service
       echo -e "\n${cyan}Checkuser iniciado com sucesso.${tag}"
       sleep 1s
       menu
@@ -90,6 +91,7 @@ restart_check_user() {
 stop_check_user() {
    echo -e "\n${cyan}Desligando checkuser${tag}"
    pm2 stop $HOME/check_user/index.js >/dev/null
+   sudo systemctl disable checkdt.service && sudo systemctl stop checkdt.service
    echo -e "\n${cyan}Checkuser desligado com sucesso.${tag}"
    sleep 1s
    menu
