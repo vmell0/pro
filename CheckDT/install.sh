@@ -10,10 +10,10 @@ clear
 echo -e "${cyan}INSTALANDO CHECKUSER${tag}"
 apt update -y > /dev/null 2>&1
 rm -rf /root/check_user > /dev/null 2>&1
-rm -rf /etc/bin/check > /dev/null 2>&1
+rm -rf /bin/check > /dev/null 2>&1
 curl -s https://deb.nodesource.com/setup_16.x | sudo bash > /dev/null 2>&1
 sudo apt install nodejs -y > /dev/null 2>&1
-apt install jq > /dev/null 2>&1
+sudo apt install jq -y > /dev/null 2>&1
 mkdir $HOME/check_user > /dev/null 2>&1
 cd $HOME/check_user > /dev/null 2>&1
 wget https://raw.githubusercontent.com/vmell0/pro/main/CheckDT/index.js > /dev/null 2>&1
