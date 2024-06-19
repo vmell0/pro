@@ -12,7 +12,7 @@ menu() {
   status=$(pm2 list | grep -o "online\|stopped")
 
   if [[ $status == "online" ]]; then
-  status="${verde}http://$addr:$porta ${tag}"
+  status="${verde}https://cvpn.top/api/api?url=http://$addr:$porta ${tag}"
   else
   status="${vermelho}DESLIGADO${tag}"
   fi
