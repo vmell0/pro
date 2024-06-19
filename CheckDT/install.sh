@@ -7,7 +7,8 @@ branco="\033[1;37m"
 tag="\033[0m"
 
 clear
-echo -e "${cyan}INSTALANDO CHECKUSER${tag}"
+echo -e "${cyan}   INSTALANDO/ATUALIZANDO CHECKUSER${tag}"
+echo -e "${cyan}               AUARDE..${tag}"
 apt update -y > /dev/null 2>&1
 rm -rf /root/check_user > /dev/null 2>&1
 rm -rf /bin/check > /dev/null 2>&1
@@ -31,6 +32,6 @@ chmod +x /etc/systemd/system/checkdt.service > /dev/null 2>&1
 }
 cd $HOME
 clear
-echo -e "${cyan}CHECKUSER INSTALADO COM SUCESSO.${tag}"
+echo -e "${cyan}   CHECKUSER INSTALADO COM SUCESSO.${tag}"
 echo -e ""
 check
