@@ -15,7 +15,7 @@ fun_multilogin() {
 			[[ $(grep -wc "$user" $database) != '0' ]] && limit="$(grep -w $user $database | cut -d' ' -f2)" || limit='1'
 			conssh="$(ps -u $user | grep sshd | wc -l)"
 			[[ "$conssh" -gt "$limit" ]] && {
-				pkill -u $user
+				pkill -f $user
 echo ULTRAPASSOU O LIMITE >> /root/banido
 echo NOME: $user DATA: $date >> /root/banido
 echo __________________________________ >> /root/banido		
