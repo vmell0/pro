@@ -336,7 +336,6 @@ case "$x" in
    clear
    autoexec
    ;;
-   ;;
    15)
    clear
    blockt
