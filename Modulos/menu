@@ -646,7 +646,7 @@ case "$x" in
    ;;
    10)
    clear
-   swapmemory
+   botssh
    ;;
    11)
    menu2
