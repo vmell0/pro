@@ -109,9 +109,6 @@ function limit2 () {
    sleep 3
    menu
 }
-inst_paineldt () {
-    rm -rf /root/paineldt.sh && wget https://script.cvpn.top/paineldt.sh && chmod 777 paineldt.sh
-}
 fun_checkuser () {
 	rm -rf /usr/bin/checkers && curl -s -L -o /usr/bin/checkers https://github.com/xzlordzx/sshpro/raw/main/checkers && chmod +x /usr/bin/checkers
 	}
@@ -529,154 +526,6 @@ case "$x" in
    ;;
 esac
 }
-fazerbackup() {
-  clear
-  echo "Fazendo backcup..."
-  rm -rf /root/painelbackup.zip
-  cd /root/PainelDT
-  #mkdir painelbackup > /dev/null
-  cp prisma/database.db painelbackup
-  cp .env painelbackup
-  zip -r painelbackup.zip painelbackup
-  mv painelbackup.zip /root
-  echo
-  echo "painelbackup.zip salvo em /root"
-}
-painelapp_bkp (){
-clear
-[[ $(netstat -nplt | grep -wc 'node') != '0' ]] && dt_sks="\033[1;32m⬤ " || dt_sks="\033[1;31m⬤ "
-echo -e "\E[44;1;37m                  ⚡ PAINEL DT ⚡                  \E[0m"
-echo -e "\033[0;36m╔══════════════════════•⊱✦⊰•══════════════════════╗\033[0m"
-echo -e "\033[0;31m    \033[1;37m FUNCIONA APENAS NO UBUNTU 20\033[0;31m"
-echo -e "\033[0;36m° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° °\033[0m"
-echo -e "\033[0;31m   [\033[1;36m01\033[0;31m] \033[1;37m• \033[1;37mFAZER BACKUP\033[0;31m
-\033[0;31m   [\033[1;36m02\033[0;31m] \033[1;37m• \033[1;37mRESTAURAR\033[0;31m
-\033[0;31m   [\033[1;36m03\033[0;31m] \033[1;37m• \033[1;37mATIVAR BACKUP AUTOMATICO\033[0;31m
-\033[0;31m   [\033[1;36m00\033[0;31m] \033[1;37m• \033[1;37mVOLTAR  \033[1;32m<\033[1;33m<\033[1;31m< \033[0m"
-echo -e "\033[0;36m╚══════════════════════•⊱✦⊰•══════════════════════╝\033[0m"
-echo -ne "   \033[1;31m➤ \033[1;32mOPÇÃO\033[1;33m\033[1;31m\033[1;37m: "; read x
-case "$x" in
-   1 | 01)
-   clear
-   fun_bar 'fazerbackup'
-   echo ""
-   echo -e "\033[1;32m  BACKUP FEITO COM SUCESSO!\033[1;33m"
-   echo -e "\033[1;32mBACKUP: painelbackup.zip SALVO EM: /root\033[1;33m"
-   sleep 2
-   painelapp
-   ;;
-   2 | 02)
-   clear
-    [[ ! -e /root/painelbackup.zip ]] && {
-    echo ""
-	echo -e "\033[1;32mARQUIVO: painelbackup.zip NÃO ENCONTRADO EM: /root\033[1;33m"
-    sleep 4
-    painelapp_bkp
-  }
-  read -p "DESEJA RESTAURAR O BACKUP? (s/n) " rapi
-  [[ $rapi = @(s|S) ]] && {
-    echo -e "\033[1;32mRESTAURANDO...\033[1;33m"
-    cd /root/PainelDT
-    rm prisma/database.db
-    rm .env
-    cd /root
-    unzip painelbackup.zip
-    cd painelbackup
-    mv database.db ../PainelDT/prisma
-    mv .env ../PainelDT
-    cd /root
-    rm -r painelbackup
-    pon
-    echo
-    echo -e "\033[1;32mBACKUP RESTAURADO COM SUCESSO!\033[1;33m"
-	sleep 4
-  }
-  [[ $rapi = @(n|N) ]] && {
-    painelapp_bkp
-	}
-    painelapp_bkp
-   ;;
-   3 | 03)
-   clear
-   read -p "ATIVAR BACKUP AUTOMATICO? (s/n) " atb
-   [[ $atb = @(s|S) ]] && {
-    echo -e "\033[1;32mATIVANDO..\033[1;33m"
-    backmod
-    echo
-	echo -e "\033[1;32mBACKUP SERÁ FEITO A CADA 5 HORAS!\033[1;33m"
-	sleep 4
-  }
-   painelapp_bkp
-   ;;
-   0 | 00)
-   clear
-   painelapp
-   ;;
-   *)
-   echo -e "\n\033[1;31mOpcao invalida !\033[0m"
-   sleep 2
-   painelapp_bkp
-   ;;
-esac
-}
-painelapp (){
-clear
-[[ $(netstat -nplt | grep -wc 'node') != '0' ]] && dt_sks="\033[1;32m⬤ " || dt_sks="\033[1;31m⬤ "
-echo -e "\E[44;1;37m                  ⚡ PAINEL DT ⚡                  \E[0m"
-echo -e "\033[0;36m╔══════════════════════•⊱✦⊰•══════════════════════╗\033[0m"
-echo -e "\033[0;31m    \033[1;37m FUNCIONA APENAS NO UBUNTU 20\033[0;31m"
-echo -e "\033[0;36m° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° °\033[0m"
-echo -e "\033[0;31m   [\033[1;36m01\033[0;31m] \033[1;37m• \033[1;37mINSTALAR/REMOVER\033[0;31m
-\033[0;31m   [\033[1;36m02\033[0;31m] \033[1;37m• \033[1;37mATIVAR $dt_sks\033[0;31m
-\033[0;31m   [\033[1;36m03\033[0;31m] \033[1;37m• \033[1;37mDESATIVAR $dt_sks\033[0;31m
-\033[0;31m   [\033[1;36m04\033[0;31m] \033[1;37m• \033[1;37mGERENCIAR BACKUP\033[0;31m
-\033[0;31m   [\033[1;36m00\033[0;31m] \033[1;37m• \033[1;37mVOLTAR  \033[1;32m<\033[1;33m<\033[1;31m< \033[0m"
-echo -e "\033[0;36m╚══════════════════════•⊱✦⊰•══════════════════════╝\033[0m"
-echo -ne "   \033[1;31m➤ \033[1;32mOPÇÃO\033[1;33m\033[1;31m\033[1;37m: "; read x
-case "$x" in
-   1 | 01)
-   clear
-   fun_bar 'inst_paineldt'
-   ./paineldt.sh
-   painelapp
-   ;;
-   2 | 02)
-    clear
-	echo -e "\033[1;32mINICIANDO O PAINEL\033[1;33m"
-	echo ""
-	pon
-	sudo systemctl enable paineldt.service && sudo systemctl start paineldt.service
-	echo ""
-	echo -e "\033[1;32mPAINEL ATIVADO COM SUCESSO\033[1;33m"
-	sleep 3
-    painelapp
-   ;;
-   3 | 03)
-    clear
-	echo -e "\033[1;32mDESATIVANDO O PAINEL\033[1;33m"
-	echo ""
-	poff
-	sudo systemctl disable --now paineldt.service && sudo systemctl stop paineldt.service && sudo systemctl daemon-reload
-	echo ""
-	echo -e "\033[1;32mPAINEL DESATIVADO COM SUCESSO!\033[1;33m"
-	sleep 3
-	painelapp
-    ;;
-   4 | 04)
-   clear
-   painelapp_bkp
-   ;;
-   0 | 00)
-   clear
-   menu
-   ;;
-   *)
-   echo -e "\n\033[1;31mOpcao invalida !\033[0m"
-   sleep 2
-   menu
-   ;;
-esac
-}
 while true $x != "ok"
 do
 stsl=$(ps x | grep "limiter"|grep -v grep > /dev/null && echo -e "\033[1;32m⬤ " || echo -e "\033[1;31m⬤ ")
@@ -721,7 +570,7 @@ echo -e "\033[0;36m
           ___) |__) |  _  |_____|  __/|  _ <| |_| | 
          |____/____/|_| |_|     |_|   |_| \_|\___/  
                                                      \033[0m"
-echo -e "\033[1;33m  VERSÃO: \033[1;37m2.4"
+echo -e "\033[1;33m  VERSÃO: \033[1;37m2.5"
 echo -e "\033[0;36m╔═══════════════════════════•⊱✦⊰•═══════════════════════════╗\033[0m"
 echo -e "\033[0;36m  \033[1;32mSISTEMA           \033[1;31m  \033[1;32mMEMÓRIA RAM      \033[1;31m \033[1;32m PROCESSADOR      \033[1;31m"
 echo -e "\033[0;36m  \033[1;36mOS: \033[1;37m$_system    \033[1;31m  \033[1;36mTotal:\033[1;37m$_ram \033[1;31m  \033[1;36mNucleos: \033[1;37m$_core\033[0m   \033[1;31m"
@@ -730,10 +579,10 @@ echo -e "\033[0;36m  \033[1;32mOnlines:\033[1;37m $_onlin    \033[1;31m  \033[1;
 echo -e "\033[0;36m° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° °\033[0m"
 echo -e "\033[0;36m\033[0;31m [\033[1;36m01\033[0;31m] \033[1;37m• \033[1;37mGERENCIAR USUARIO \033[0;31m        [\033[1;36m08\033[0;31m] \033[1;37m• \033[1;37mGERENCIAR SERVIDOR  \033[1;31m      
 \033[0;31m [\033[1;36m02\033[0;31m] \033[1;37m• \033[1;37mOTIMIZAR \033[0;31m                 [\033[1;36m09\033[0;31m] \033[1;37m• \033[1;37mLIMITER $stsl\033[1;31m          
-\033[0;31m [\033[1;36m03\033[0;31m] \033[1;37m• \033[1;37mBADVPN $stsu\033[0;31m                 [\033[1;36m10\033[0;31m] \033[1;37m• \033[1;37mCHECK-DT $dt_sks\033[1;31m             
-\033[0;31m [\033[1;36m04\033[0;31m] \033[1;37m• \033[1;37mBACKUP \033[0;31m                   [\033[1;36m11\033[0;31m] \033[1;37m• \033[1;37mINFO VPS\033[1;31m
-\033[0;31m [\033[1;36m05\033[0;31m] \033[1;37m• \033[1;37mSPEEDTEST \033[0;31m                [\033[1;36m12\033[0;31m] \033[1;37m• \033[1;37mFERRAMENTAS \033[1;31m 
-\033[0;31m [\033[1;36m06\033[0;31m] \033[1;37m• \033[1;37mMEMORIA SWAPP \033[0;31m            [\033[1;36m00\033[0;31m] \033[1;37m• \033[1;37mSAIR\033[1;31m 
+\033[0;31m [\033[1;36m03\033[0;31m] \033[1;37m• \033[1;37mBADVPN $stsu\033[0;31m                 [\033[1;36m10\033[0;31m] \033[1;37m• \033[1;37mINFO VPS\033[1;31m            
+\033[0;31m [\033[1;36m04\033[0;31m] \033[1;37m• \033[1;37mBACKUP \033[0;31m                   [\033[1;36m11\033[0;31m] \033[1;37m• \033[1;37mFERRAMENTAS \033[1;31m 
+\033[0;31m [\033[1;36m05\033[0;31m] \033[1;37m• \033[1;37mSPEEDTEST \033[0;31m                [\033[1;36m00\033[0;31m] \033[1;37m• \033[1;37mSAIR\033[1;31m
+\033[0;31m [\033[1;36m06\033[0;31m] \033[1;37m• \033[1;37mMEMORIA SWAPP \033[0;31m            
 \033[0;31m [\033[1;36m07\033[0;31m] \033[1;37m• \033[1;37mMODO DE CONEXAO   \033[0;31m"
 echo -e "\033[0;36m╚═══════════════════════════•⊱✦⊰•═══════════════════════════╝\033[0m"
 echo -ne "   \033[1;31m➤ \033[1;32mOPÇÃO\033[1;33m\033[1;31m\033[1;37m: "; read x
@@ -783,20 +632,20 @@ case "$x" in
    clear
    limit_ssh
    ;;
-   10)
+   1000000)
    clear
    [[ ! -e $HOME/check_user ]] && {
    bash <(curl -sL https://raw.githubusercontent.com/vmell0/pro/main/CheckDT/install.sh)
    }
    check
    ;;
-   11)
+   10)
    clear
    detalhes
    echo -ne "\n\033[1;31m   ENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
    clear
    ;;
-   12)
+   11)
    menu2
    ;;
    0 | 00)
