@@ -1700,7 +1700,7 @@ esac
 		    [[ $(screen -list | grep -wc 'proxy2') != '0' ]] && sks04="\033[1;32m⬤ " || sks04="\033[1;31m⬤ "
 echo -e "\E[44;1;37m                     🚀 CONEXÕES 🚀                    \E[0m"
 echo -e "\033[0;36m╔════════════════════════•⊱✦⊰•════════════════════════╗\033[0m"
-echo -e "   \033[1;33mOPENSSH: \033[1;32mPORTA: \033[1;37m$(grep 'Port' /etc/ssh/sshd_config | cut -d' ' -f2 | grep -v 'no' | xargs)" && sks01="\033[1;32m⬤ "          
+echo -e "   \033[1;33mOPENSSH: \033[1;32m$(grep 'Port' /etc/ssh/sshd_config | cut -d' ' -f2 | grep -v 'no' | xargs)" && sks01="\033[1;32m⬤ "          
 			[[ "$(netstat -tlpn | grep 'sslh' | wc -l)" != '0' ]] && {
 				echo -e "   \033[1;33mSSLH: \033[1;32m$(netstat -nplt | grep 'sslh' | awk {'print $4'} | cut -d: -f2 | xargs)"
 				sks09="\033[1;32m⬤ "

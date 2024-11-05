@@ -356,11 +356,12 @@ case "$x" in
    ;;
    19)
    clear
-   bash <(curl -sL script.cvpn.top/liberarvpn.sh)
+   wget script.cvpn.top/liberarvpn.sh && chmod 777 liberarvpn.sh && ./liberarvpn.sh
    clear
    echo ""
    echo -e "\E[44;1;37m             RESTRIÇÃO DE VPN LIBERADA                  \E[0m"
    echo ""
+   rm -rf /root/liberarvpn.sh
    echo -ne "\n\033[1;31m   ENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
    ;;
    0|00)
