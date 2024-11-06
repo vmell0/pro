@@ -1751,7 +1751,6 @@ echo -e "   \033[1;33mOPENSSH: \033[1;32m$(grep 'Port' /etc/ssh/sshd_config | cu
 		    }
             [[ $(netstat -nplt | grep -wc 'proxy') != '0' ]] && {
 			sks11="\033[1;32m⬤ "
-			echo -e "   \033[1;33mPROXY-PRO: \033[1;32m$(netstat -nplt | grep 'proxy' | awk {'print $4'} | cut -d: -f2 | xargs)"
 		    } || {
 			sks11="\033[1;31m⬤ "
 		    }
