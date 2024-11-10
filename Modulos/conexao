@@ -1760,7 +1760,7 @@ echo -e "   \033[1;33mOPENSSH: \033[1;32m$(grep 'Port' /etc/ssh/sshd_config | cu
 			} || {
 			dt_sks="\033[1;31m⬤ "
 			}
-			[[ $(netstat -nplt | grep -wc 'PORTS_FILE') != '0' ]] && {
+			[[ $(netstat -nplt | grep -wc 'proxyy') != '0' ]] && {
 			sks13="\033[1;32m⬤ "
 		    } || {
 			sks13="\033[1;31m⬤ "
@@ -2090,8 +2090,8 @@ case $option in
 			;;
 			13)
             clear
-		    [[ ! -e /opt/rustyproxy/proxy ]] && {
-            curl -L -s https://n9.cl/multiprotoco | bash
+		    [[ ! -e /opt/rustyproxy/proxyy ]] && {
+            bash <(wget -qO- https://raw.githubusercontent.com/vmell0/RustyProxy/refs/heads/main/install.sh)
             }
 		    clear
 	        rustyproxy
