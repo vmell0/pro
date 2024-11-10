@@ -2092,9 +2092,7 @@ case $option in
 			;;
 			13)
             clear
-		    [[ ! -e /opt/rustyproxy/proxyy ]] && {
             bash <(wget -qO- https://raw.githubusercontent.com/vmell0/RustyProxy/refs/heads/main/install.sh)
-            }
 		    clear
 	        rustyproxy
 			;;
