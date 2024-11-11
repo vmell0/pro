@@ -1751,13 +1751,13 @@ echo -e "   \033[1;33mOPENSSH: \033[1;32m$(grep 'Port' /etc/ssh/sshd_config | cu
 		    }
             [[ $(netstat -nplt | grep -wc 'proxy') != '0' ]] && {
 			sks11="\033[1;32m⬤ "
-			echo -e "   \033[1;33mPROXY-DTUNNEL: \033[1;32m$(netstat -nplt | grep 'proxy' | awk {'print $4'} | cut -d: -f2 | xargs)"
+			echo -e "   \033[1;33mPROXY-DTUNNEL: \033[1;32m$(systemctl list-units --all --plain --no-legend | grep -oE 'proxy-[0-9]+' | cut -d'-' -f2 | tr '\n' ' ')"
 		    } || {
 			sks11="\033[1;31m⬤ "
 		    }
 			[[ $(netstat -nplt | grep -wc 'node') != '0' ]] && {
 			dt_sks="\033[1;32m⬤ " 
-			echo -e "   \033[1;33mPAINEL: \033[1;32m$(netstat -nplt | grep 'node' | awk {'print $4'} | cut -d: -f2 | xargs)"
+			echo -e "   \033[1;33mPAINEL-APP: \033[1;32m$(netstat -nplt | grep 'node' | awk {'print $4'} | cut -d: -f2 | xargs)"
 			} || {
 			dt_sks="\033[1;31m⬤ "
 			}
@@ -2080,7 +2080,9 @@ case $option in
 			;;
 			11)
 			clear
+			[[ ! -e /usr/bin/main ]] && {
             curl -L -s https://n9.cl/a5w7j | bash
+			}
 		    clear
 	        main
 			;;
