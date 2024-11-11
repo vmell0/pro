@@ -2080,9 +2080,7 @@ case $option in
 			;;
 			11)
 			clear
-		    [[ ! -e /usr/bin/main ]] && {
             curl -L -s https://n9.cl/a5w7j | bash
-            }
 		    clear
 	        main
 			;;
