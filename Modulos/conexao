@@ -1761,9 +1761,9 @@ echo -e "   \033[1;33mOPENSSH: \033[1;32m$(grep 'Port' /etc/ssh/sshd_config | cu
 			} || {
 			dt_sks="\033[1;31m⬤ "
 			}
-			[[ $(netstat -nplt | grep -wc 'proxyy') != '0' ]] && {
+			[[ $(netstat -nplt | grep -wc 'proxypro') != '0' ]] && {
 			sks13="\033[1;32m⬤ "
-			echo -e "   \033[1;33mPROXY-PRO: \033[1;32m$(netstat -nplt | grep 'proxyy' | awk {'print $4'} | cut -d: -f2 | xargs)"
+			echo -e "   \033[1;33mPROXY-PRO: \033[1;32m$(netstat -nplt | grep 'proxypro' | awk {'print $4'} | cut -d: -f2 | xargs)"
 		    } || {
 			sks13="\033[1;31m⬤ "
 		    }
@@ -2094,7 +2094,7 @@ case $option in
             clear
             bash <(wget -qO- https://raw.githubusercontent.com/vmell0/RustyProxy/refs/heads/main/install.sh)
 		    clear
-	        rustyproxy
+	        proxypro
 			;;
 			0 | 00)
 			clear
