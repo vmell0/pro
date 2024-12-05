@@ -594,6 +594,9 @@ executar_comando() {
 				sleep 3
 				fun_conexao
 			}
+   correção () {
+   sudo apt-get remove stunnel4 -y && apt purge stunnel4 -y && rm -rf /etc/stunnel
+  }
 		else
 			clear
 			echo -e "\E[44;1;37m              INSTALAR SSL TUNNEL               \E[0m"
@@ -611,7 +614,7 @@ executar_comando() {
 			elif [[ "$resposta" = '2' ]]; then
 				portssl='80'
 			elif [[ "resposta" = '3' ]]; then
-			    apt-get remove stunnel4 -y && apt purge stunnel4 -y && rm -rf /etc/stunnel
+			 correcao
 				fun_conexao
 			elif [[ "$resposta" = '0' ]]; then
 				echo -e "\033[1;31mRetornando...\033[0m"
@@ -680,7 +683,6 @@ executar_comando() {
 				echo -e "\n\033[1;32mSSL TUNNEL INSTALADO COM SUCESSO !\033[1;31m PORTA: \033[1;33m$porta\033[0m"
 				sleep 1
 				clear
-				echo -e "Corrigindo SSL CLARO"
 				cd /etc/stunnel/
 				rm -rf stunnel.conf
 				rm -rf stunnel.pem
