@@ -2127,9 +2127,9 @@ case $option in
             menuop
 			;;
 			13)
-            fun_bar "bash <(wget -qO- https://raw.githubusercontent.com/vmell0/RustyProxy/refs/heads/main/install.sh)"
-		    clear
-	        proxypro
+   bash <(curl -sL https://raw.githubusercontent.com/vmell0/RustyProxy/refs/heads/main/install.sh)
+		 clear
+	  proxypro
 			;;
 			0 | 00)
 			clear
