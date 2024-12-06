@@ -29,7 +29,7 @@ executar_comando() {
     local percent=0
     local bar=""
 
-    echo -e "${GREEN}${mensagem:0:50}...${NC}"
+    echo -e "${GREEN}${mensagem:0:50}${NC}"
     echo -n ' '
     
     eval "$comando" & local cmd_pid=$!
@@ -39,7 +39,7 @@ executar_comando() {
         if [ $percent -ge 100 ]; then
             percent=100
         fi
-        echo -ne "\r[${bar:0:$((percent / 5))}] $percent%"
+        echo -ne "\r$percent% [${bar:0:$((percent / 5))}]"
         sleep $delay
         bar=$(printf "%-20s" | tr ' ' '=')
     done
@@ -47,7 +47,7 @@ executar_comando() {
     wait $cmd_pid
     if [ $? -eq 0 ]; then
         percent=100
-        echo -ne "\r[${bar:0:20}] $percent%${NC}\n"
+        echo -ne "\r$percent%$ [${bar:0:20}]{NC}\n"
     else
         echo -e "\r${RED}Erro ao executar o comando.${NC}"
     fi
