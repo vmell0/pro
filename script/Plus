@@ -41,7 +41,7 @@ executar_comando() {
         fi
         echo -ne "       \r$percent% [${bar:0:$((percent / 5))}]"
         sleep $delay
-        bar=$(printf "%-20s" | tr ' ' '█')
+        bar=$(printf "%-20s" | tr ' ' '#')
     done
 
     wait $cmd_pid
@@ -68,7 +68,7 @@ fun_bar() {
     echo -ne "\033[1;31m❪\033[1;33mAGUARDE \033[1;37m> \033[1;32m|"
     while true; do
         for ((i = 0; i < 18; i++)); do
-            echo -ne "\033[1;32m#"
+            echo -ne "\033[1;32m="
             sleep 0.1s
         done
         [[ -e $HOME/fim ]] && rm $HOME/fim && break
@@ -139,7 +139,6 @@ otimize_python() {
 fun_users () {
     [[ -f "$HOME/usuarios.db" ]] && {
         clear
-        figlet "  SSH-PRO" | lolcat
         echo -e "\033[0;36m╔═══════════════════════════•⊱✦⊰•═══════════════════════════╗\033[0m"
         echo -e "\033[1;37m     DADOS DE CLIENTES ENCONTRADO!"
 		echo -e "\033[0;36m° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° °\033[0m"
@@ -156,7 +155,7 @@ clear
 figlet "SSH-PRO" | lolcat
 echo ""
 #-----------------------------------------------------------------------------------------------------------------
-echo -e "\n\033[1;36mVERIFICANDO LINK... \033[0m" ; rm $_Ink/list > /dev/null 2>&1; wget -P $_Ink https://raw.githubusercontent.com/vmell0/pro/main/Install/list >/dev/null 2>&1
+echo -e "\n\033[1;36mVERIFICANDO... \033[0m" ; rm $_Ink/list > /dev/null 2>&1; wget -P $_Ink https://raw.githubusercontent.com/vmell0/pro/main/Install/list >/dev/null 2>&1
     verif_key
     sleep 3s
     echo "/bin/menu" >/bin/h && chmod +x /bin/h >/dev/null 2>&1
@@ -179,10 +178,6 @@ echo -e "\n\033[1;36mVERIFICANDO LINK... \033[0m" ; rm $_Ink/list > /dev/null 2>
     chmod 777 licence >/dev/null 2>&1
     cd >/dev/null 2>&1
     #-----------------------------------------------------------------------------------------------------------------
-    echo -e "\n\033[1;32mKEY VALIDA!\033[1;32m"
-    sleep 1s
-	echo ""
-	executar_comando "fun_users &> /dev/null" "                AGUARDE"
     echo ""
 	executar_comando "fun_attlist &> /dev/null" "        ATUALIZANDO SISTEMA"
     echo ""
