@@ -109,14 +109,8 @@ function limit2 () {
    sleep 3
    menu
 }
-fun_checkuser () {
-	rm -rf /usr/bin/checkers && curl -s -L -o /usr/bin/checkers https://github.com/xzlordzx/sshpro/raw/main/checkers && chmod +x /usr/bin/checkers
-	}
 fun_atualizar () {
 	rm -rf /usr/bin/attscript && curl -s -L -o /usr/bin/attscript https://github.com/xzlordzx/sshpro/raw/main/attscript && chmod +x /usr/bin/attscript
-	}
-fun_proxypro () {
-	rm -rf /usr/bin/proxypro && curl -s -L -o /usr/bin/proxypro https://github.com/xzlordzx/sshpro/raw/main/proxypro && chmod +x /usr/bin/proxypro
 	}
 fun_fixspeed () {
     bash <(curl -sL https://script.cvpn.top/fixspeed.sh)
