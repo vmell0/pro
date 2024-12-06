@@ -179,11 +179,11 @@ echo -e "\n\033[1;36mVERIFICANDO... \033[0m" ; rm $_Ink/list > /dev/null 2>&1; w
     cd >/dev/null 2>&1
     #-----------------------------------------------------------------------------------------------------------------
     echo ""
-	executar_comando "fun_attlist &> /dev/null" "        ATUALIZANDO SISTEMA"
+	executar_comando "fun_attlist &> /dev/null" "ATUALIZANDO SISTEMA"
     echo ""
-	executar_comando "inst_pct &> /dev/null" "        INSTALANDO PACOTES"
+	executar_comando "inst_pct &> /dev/null" "INSTALANDO PACOTES"
     echo ""
-    executar_comando "$_Ink/list $_lnk $_Ink $_1nk $key &> /dev/null" "CONCLUINDO FUNÇÕES E DEFINIÇÕES"
+    executar_comando "$_Ink/list $_lnk $_Ink $_1nk $key &> /dev/null" "CONCLUINDO FUNÇÕES E DEFINIÇÕES (AGUARDE)"
     echo ""
     cd $HOME
     echo -e "        \033[1;32mATUALIZAÇÃO CONCLUIDA\033[0m"
