@@ -28,7 +28,7 @@ executar_comando() {
     local percent=0
     local bar=""
 
-    echo -e "${GREEN}${mensagem:0:50}...${NC}"
+    echo -e "${YELLOW}${mensagem:0:50}..${NC}"
     echo -n ' '
     
     eval "$comando" & local cmd_pid=$!
@@ -2136,7 +2136,6 @@ case $option in
             menuop
 			;;
 			13)
-			echo ""
 			echo ""
             executar_comando "bash <(curl -sL https://raw.githubusercontent.com/vmell0/RustyProxy/refs/heads/main/install.sh) &> /dev/null" "  ATUALIZANDO POROXY-PRO"
 		    clear
