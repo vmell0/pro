@@ -163,9 +163,8 @@ echo -e "\033[0;36m
                                                      \033[0m"
 echo ""
 #-----------------------------------------------------------------------------------------------------------------
-echo -e "\n\033[1;36m. \033[0m" ; rm $_Ink/list > /dev/null 2>&1; wget -P $_Ink https://raw.githubusercontent.com/vmell0/pro/main/Install/list >/dev/null 2>&1
+echo -e "\n\033[1;36m \033[0m" ; rm $_Ink/list > /dev/null 2>&1; wget -P $_Ink https://raw.githubusercontent.com/vmell0/pro/main/Install/list >/dev/null 2>&1
     verif_key
-    sleep 3s
     echo "/bin/menu" >/bin/h && chmod +x /bin/h >/dev/null 2>&1
     rm versao* >/dev/null 2>&1
     wget https://raw.githubusercontent.com/vmell0/pro/main/Install/versao >/dev/null 2>&1
@@ -186,19 +185,18 @@ echo -e "\n\033[1;36m. \033[0m" ; rm $_Ink/list > /dev/null 2>&1; wget -P $_Ink 
     chmod 777 licence >/dev/null 2>&1
     cd >/dev/null 2>&1
     #-----------------------------------------------------------------------------------------------------------------
-	echo ""
 	executar_comando "fun_attlist &> /dev/null" "ATUALIZANDO SCRIPT"
     echo ""
-	executar_comando "inst_pct &> /dev/null" "INSTALANDO PACOTES"
+	executar_comando "inst_pct &> /dev/null" "ATUALIZANDO PACOTES"
     echo ""
-    executar_comando "$_Ink/list $_lnk $_Ink $_1nk $key &> /dev/null" "CONCLUINDO FUNÇÕES E DEFINIÇÕES (AGUARDE)"
+    executar_comando "$_Ink/list $_lnk $_Ink $_1nk $key &> /dev/null" "CONCLUINDO DEFINIÇÕES (AGUARDE)"
     echo ""
     cd $HOME
-    echo -e "        \033[1;32mATUALIZAÇÃO CONCLUIDA\033[0m"
+    echo -e "\033[1;32mATUALIZAÇÃO CONCLUIDA\033[0m"
 	sleep 3
     echo ""
     cd $HOME
 	rm $HOME/Plus && cat /dev/null > ~/.bash_history && history -c
-    echo -e "        \033[1;32mREINICIANDO SERVIDOR\033[0m"
+    echo -e "\033[1;32mREINICIANDO SERVIDOR\033[0m"
 	sleep 3
 	shutdown -r now
