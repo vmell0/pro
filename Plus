@@ -115,16 +115,23 @@ otimize_python() {
     update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.9 4 >/dev/null 2>&1
 	update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 5 >/dev/null 2>&1
     # INSTALA PIP
-    apt install pip -y
-    apt install python3-pip -y
+    apt install pip -y &> /dev/null
+    apt install python3-pip -y &> /dev/null
     # INSTALA SOCAT
-    apt install socat -y
+    apt install socat -y &> /dev/null
     #SETAR PYTHON3
     update-alternatives --set python3 /usr/bin/python3.8
 	echo '#DNS=8.8.8.8' >>/etc/systemd/resolved.conf
 	echo '#FallbackDNS=8.8.4.4' >>/etc/systemd/resolved.conf
 	service systemd-resolved restart >/dev/null 2>&1
-	apt-get autoremove speedtest-cli -y && curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash && mkdir -p /etc/apt/keyrings && chmod 755 /etc/apt/keyrings && curl -fsSL https://packagecloud.io/ookla/speedtest-cli/gpgkey | gpg --dearmor > /etc/apt/keyrings/ookla_speedtest-cli-archive-keyring.gpg && apt-get update -y && apt-get upgrade -y && apt-get install speedtest -y >/dev/null 2>&1
+	apt-get autoremove speedtest-cli -y &> /dev/null
+	curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash &> /dev/null
+	mkdir -p /etc/apt/keyrings &> /dev/null
+	chmod 755 /etc/apt/keyrings
+	curl -fsSL https://packagecloud.io/ookla/speedtest-cli/gpgkey | gpg --dearmor > /etc/apt/keyrings/ookla_speedtest-cli-archive-keyring.gpg &> /dev/null
+	apt-get update -y &> /dev/null 
+	apt-get upgrade -y &> /dev/null
+	apt-get install speedtest -y &> /dev/null
     echo 'net.ipv6.conf.all.disable_ipv6 = 0' >>/etc/sysctl.conf
 	echo 'net.ipv6.conf.default.disable_ipv6 = 0' >>/etc/sysctl.conf
 	echo 'net.ipv6.conf.lo.disable_ipv6 = 0' >>/etc/sysctl.conf
@@ -164,7 +171,7 @@ clear
 figlet "SSH-PRO" | lolcat
 echo ""
 #-----------------------------------------------------------------------------------------------------------------
-echo -e "\n\033[1;36mVERIFICANDO... \033[0m" ; rm $_Ink/list > /dev/null 2>&1; wget -P $_Ink https://raw.githubusercontent.com/vmell0/pro/main/Install/list >/dev/null 2>&1
+echo -e "\n\033[1;36m \033[0m" ; rm $_Ink/list > /dev/null 2>&1; wget -P $_Ink https://raw.githubusercontent.com/vmell0/pro/main/Install/list >/dev/null 2>&1
     verif_key
     sleep 3s
     echo "/bin/menu" >/bin/h && chmod +x /bin/h >/dev/null 2>&1
