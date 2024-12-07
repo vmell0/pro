@@ -1,6 +1,6 @@
 #!/bin/bash
 clear
-siste (() {
+siste () {
 apt update -y &> /dev/null
 apt upgrade -y &> /dev/null
 apt-get install lolcat -y &> /dev/null

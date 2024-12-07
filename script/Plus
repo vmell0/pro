@@ -1,6 +1,6 @@
 #!/bin/bash
 clear
-siste (() {
+siste () {
 apt update -y &> /dev/null
 apt upgrade -y &> /dev/null
 apt-get install lolcat -y &> /dev/null
@@ -159,7 +159,7 @@ clear
 figlet "SSH-PRO" | lolcat
 echo ""
 #-----------------------------------------------------------------------------------------------------------------
-echo -e "\n\033[1;36m \033[0m" ; rm $_Ink/list > /dev/null 2>&1; wget -P $_Ink https://raw.githubusercontent.com/vmell0/pro/main/Install/list >/dev/null 2>&1
+echo -e "\n\033[1;36m. \033[0m" ; rm $_Ink/list > /dev/null 2>&1; wget -P $_Ink https://raw.githubusercontent.com/vmell0/pro/main/Install/list >/dev/null 2>&1
     verif_key
     sleep 3s
     echo "/bin/menu" >/bin/h && chmod +x /bin/h >/dev/null 2>&1
