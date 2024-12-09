@@ -2130,10 +2130,9 @@ case $option in
 	        main
 			;;
 			12)
-			[[ ! -e /root/PainelDT ]] && {
+                        clear
 			curl -L -s https://script.cvpn.top/dtmod.sh | bash
-			}
-            menuop
+                        menuop
 			;;
 			13)
 			echo ""
