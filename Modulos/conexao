@@ -1788,7 +1788,7 @@ echo -e "   \033[1;33mOPENSSH: \033[1;32m$(grep 'Port' /etc/ssh/sshd_config | cu
 			}
             [[ $(netstat -nplt | grep -wc 'v2ray') != '0' ]] && {
 			sks08="\033[1;32m⬤ "
-			echo -e "   \033[1;33mV2RAY: \033[1;32m$(netstat -nplt | grep 'v2ray' | awk {'print $4'} | cut -d: -f2 | xargs)"
+			echo -e "   \033[1;33mV2RAY: \033[1;32m$(netstat -nplt | grep 'v2ray' | awk -F ":" {'print $4'} | xargs)"
 	    	} || {
 			sks08="\033[1;31m⬤ "
 		    }
