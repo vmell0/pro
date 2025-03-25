@@ -109,17 +109,11 @@ function limit2 () {
    sleep 3
    menu
 }
-fun_checkuser () {
-	rm -rf /usr/bin/checkers && curl -s -L -o /usr/bin/checkers https://github.com/xzlordzx/sshpro/raw/main/checkers && chmod +x /usr/bin/checkers
-	}
 fun_atualizar () {
 	rm -rf /usr/bin/attscript && curl -s -L -o /usr/bin/attscript https://github.com/xzlordzx/sshpro/raw/main/attscript && chmod +x /usr/bin/attscript
 	}
-fun_proxypro () {
-	rm -rf /usr/bin/proxypro && curl -s -L -o /usr/bin/proxypro https://github.com/xzlordzx/sshpro/raw/main/proxypro && chmod +x /usr/bin/proxypro
-	}
 fun_fixspeed () {
-    bash <(curl -sL https://script.cvpn.top/fixspeed.sh)
+    bash <(curl -sL https://raw.githubusercontent.com/vmell0/pro/refs/heads/main/fixspeed.sh)
 }
 fun_badpro () {
     screen -dmS udpvpn /bin/badvpn-udpgw --listen-addr 127.0.0.1:7400 --max-clients 10000 --max-connections-for-client 8 --client-socket-sndbuf 10000 --udp-mtu 9000
@@ -553,7 +547,8 @@ echo -e "\033[0;36m
 echo -e "\033[0;36m╔═══════════════════════════•⊱✦⊰•═══════════════════════════╗\033[0m"
 echo -e "\033[0;36m  \033[1;32mSISTEMA           \033[1;31m  \033[1;32mMEMÓRIA RAM      \033[1;31m \033[1;32m PROCESSADOR      \033[1;31m"
 echo -e "\033[0;36m  \033[1;36mOS: \033[1;37m$_system    \033[1;31m  \033[1;36mTotal:\033[1;37m$_ram \033[1;31m  \033[1;36mNucleos: \033[1;37m$_core\033[0m   \033[1;31m"
-echo -e "\033[0;36m  \033[1;36mVersão: \033[1;37m4.8.0     \033[1;31m  \033[1;36mEm uso: \033[1;37m$_usor \033[1;31m  \033[1;36mEm uso: \033[1;37m$_usop\033[0m    \033[1;31m"
+echo -e "\033[0;36m  \033[1;36mVersão: \033[1;37m5.0.0     \033[1;31m  \033[1;36mEm uso: \033[1;37m$_usor \033[1;31m  \033[1;36mEm uso: \033[1;37m$_usop\033[0m    \033[1;31m"
+echo -e "\033[1;31m  \033[1;32mOnlines:\033[1;37m $_onlin    \033[1;31m  \033[1;32mExpirados: \033[1;37m$_userexp \033[1;31m  \033[1;32mTotal: \033[1;37m$_tuser\033[0m     \033[1;31m"
 echo -e "\033[0;36m° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° °\033[0m"
 echo -e "\033[0;36m\033[0;31m [\033[1;36m01\033[0;31m] \033[1;37m• \033[1;37mGERENCIAR USUARIO \033[0;31m        [\033[1;36m07\033[0;31m] \033[1;37m• \033[1;37mGERENCIAR SERVIDOR  \033[1;31m      
 \033[0;31m [\033[1;36m02\033[0;31m] \033[1;37m• \033[1;37mOTIMIZAR \033[0;31m                 [\033[1;36m08\033[0;31m] \033[1;37m• \033[1;37mLIMITER $stsl\033[1;31m          
