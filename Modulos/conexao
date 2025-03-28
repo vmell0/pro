@@ -1604,7 +1604,7 @@ echo -e "   \033[1;33mSSH: \033[1;32m$(grep 'Port' /etc/ssh/sshd_config | cut -d
 			}
 			[[ $(netstat -nplt | grep -wc 'proxypro') != '0' ]] && {
 			sks13="\033[1;32m⬤ "
-			echo -e "   \033[1;33mPROXY: \033[1;32m$(netstat -nplt | grep 'proxypro' | awk {'print $4'} | cut -d: -f2 | xargs)"
+			echo -e "   \033[1;33mPROXY MULTI: \033[1;32m$(netstat -nplt | grep 'proxypro' | awk -F ":" {'print $4'} | xargs)"
 		    } || {
 			sks13="\033[1;31m⬤ "
 		    }
@@ -1631,7 +1631,6 @@ case $option in
     exit
 	;;
 	3 | 03)
-	tput reset
 	clear
 	echo ""
     executar_comando "bash <(curl -sL https://raw.githubusercontent.com/vmell0/RustyProxy/refs/heads/main/install.sh) &> /dev/null" "  ATUALIZANDO PROXY MULTI"
