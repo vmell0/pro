@@ -621,7 +621,7 @@ executar_comando() {
 			elif [[ "$resposta" = '2' ]]; then
 				portssl='80'
 			elif [[ "resposta" = '3' ]]; then
-			 correcao
+			 sudo apt-get remove stunnel4 -y && apt purge stunnel4 -y && rm -rf /etc/stunnel
 				fun_conexao
 			elif [[ "$resposta" = '0' ]]; then
 				echo -e "\033[1;31mRetornando...\033[0m"
