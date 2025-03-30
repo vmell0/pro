@@ -704,9 +704,6 @@ executar_comando() {
 				chmod 777 stunnel.conf
 				service stunnel4 restart
 				cd $HOME
-				clear
-				echo -e "Corrigido"
-				sleep 2
 				fun_conexao
 			} || {
 				echo -e "\n\033[1;31mRetornando...\033[0m"
@@ -1635,7 +1632,7 @@ case $option in
 	echo ""
     executar_comando "bash <(curl -sL https://raw.githubusercontent.com/vmell0/RustyProxy/refs/heads/main/install.sh) &> /dev/null" "  ATUALIZANDO PROXY MULTI"
     clear
-	proxypro
+	menuproxy
 	;;
 	4 | 04)
 	tput reset
