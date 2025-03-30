@@ -77,11 +77,11 @@ aguarde 'fun_tst'
 clear
 echo -e "\E[44;1;37m                🚀 SPEEDTEST 🚀                  \E[0m"
 echo -e "\033[0;36m╔═════════════════════•⊱✦⊰•═════════════════════╗\033[0m"
-println!("   Rede: {:<38} ", speedtest.interface.name);
-println!("   Ip: {:<40} ", speedtest.interface.internal_ip);
-println!("   Download: {:<34} ", format!("{:.2}mbps", download_mbps));
-println!("   Upload:   {:<34} ", format!("{:.2}mbps", upload_mbps));
-println!("   Ping:     {:<32}   ", format!("{:.2}ms", speedtest.ping.latency));
+echo -e ""   Rede: {:<38} ", speedtest.interface.name"
+echo -e ""   Ip: {:<40} ", speedtest.interface.internal_ip"
+echo -e ""   Download: {:<34} ", format!("{:.2}mbps", download_mbps)"
+echo -e ""   Upload:   {:<34} ", format!("{:.2}mbps", upload_mbps)"
+echo -e ""   Ping:     {:<32}   ", format!("{:.2}ms", speedtest.ping.latency)"
 echo -e "\033[0;36m╚═════════════════════•⊱✦⊰•═════════════════════╝\033[0m"
 rm -rf $HOME/speed
 }
