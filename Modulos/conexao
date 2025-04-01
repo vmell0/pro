@@ -1629,8 +1629,7 @@ case $option in
 	;;
 	3 | 03)
 	clear
-	echo ""
-    executar_comando "bash <(curl -sL https://raw.githubusercontent.com/vmell0/RustyProxy/refs/heads/main/install.sh) &> /dev/null" "  ATUALIZANDO PROXY MULTI (AGUARDE, PODE DEMORAR)"
+	bash <(wget -qO- https://raw.githubusercontent.com/vmell0/RustyProxy/refs/heads/main/install.sh)
     clear
 	menuproxy
 	;;
