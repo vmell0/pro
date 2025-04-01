@@ -96,7 +96,7 @@ fun_atualizar () {
 	rm -rf /usr/bin/attscript && curl -s -L -o /usr/bin/attscript https://github.com/xzlordzx/sshpro/raw/main/attscript && chmod +x /usr/bin/attscript
 	}
 fun_fixspeed () {
-    curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | bash > /dev/null 2>&1 || error_exit "Falha ao baixar e instalar o script do speedtest"
+    bash <(curl -sL https://raw.githubusercontent.com/vmell0/pro/refs/heads/main/fixspeed.sh) | bash > /dev/null 2>&1 || error_exit "Falha ao baixar e instalar o script do speedtest"
     apt-get install speedtest -y > /dev/null 2>&1 || error_exit "Falha ao instalar o speedtest"
 }
 fun_badpro () {
@@ -531,7 +531,7 @@ echo -e "\033[0;36m
 echo -e "\033[0;36m╔═══════════════════════════•⊱✦⊰•═══════════════════════════╗\033[0m"
 echo -e "\033[0;36m  \033[1;32mSISTEMA           \033[1;31m  \033[1;32mMEMÓRIA RAM      \033[1;31m \033[1;32m PROCESSADOR      \033[1;31m"
 echo -e "\033[0;36m  \033[1;36mOS: \033[1;37m$_system    \033[1;31m  \033[1;36mTotal:\033[1;37m$_ram \033[1;31m  \033[1;36mNucleos: \033[1;37m$_core\033[0m   \033[1;31m"
-echo -e "\033[0;36m  \033[1;36mVersão: \033[1;37m5.0.3     \033[1;31m  \033[1;36mEm uso: \033[1;37m$_usor \033[1;31m  \033[1;36mEm uso: \033[1;37m$_usop\033[0m    \033[1;31m"
+echo -e "\033[0;36m  \033[1;36mVersão: \033[1;37m5.1     \033[1;31m  \033[1;36mEm uso: \033[1;37m$_usor \033[1;31m  \033[1;36mEm uso: \033[1;37m$_usop\033[0m    \033[1;31m"
 echo -e "\033[1;31m  \033[1;32mOnlines:\033[1;37m $_onlin    \033[1;31m  \033[1;32mExpirados: \033[1;37m$_userexp \033[1;31m  \033[1;32mTotal: \033[1;37m$_tuser\033[0m     \033[1;31m"
 echo -e "\033[0;36m° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° °\033[0m"
 echo -e "\033[0;36m\033[0;31m [\033[1;36m01\033[0;31m] \033[1;37m• \033[1;37mGERENCIAR USUARIO \033[0;31m        [\033[1;36m07\033[0;31m] \033[1;37m• \033[1;37mGERENCIAR SERVIDOR  \033[1;31m      
