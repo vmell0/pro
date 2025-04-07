@@ -470,7 +470,7 @@ executar_comando() {
 				portssl='22'
 			elif [[ "$resposta" = '2' ]]; then
 				portssl='80'
-			elif [[ "resposta" = '3' ]] && {
+			elif [[ "resposta" = '3' ]]; {
 				echo -e "\033[1;32mREMOVENDO !\033[0m"
 				del_stunnel() {
 					service stunnel4 stop
@@ -487,7 +487,7 @@ executar_comando() {
 				echo ""
 				echo -e "\033[1;32mREMOVIDO COM SUCESSO!\033[0m"
 				sleep 3
-				fun_conexao
+				}				fun_conexao
 			elif [[ "$resposta" = '0' ]]; then
 				echo -e "\033[1;31mRetornando...\033[0m"
 				sleep 3
