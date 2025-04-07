@@ -396,153 +396,6 @@ executar_comando() {
 	            v2rayinst
             fi
         }
-	fun_chisel() {
-		clear
-		echo -e "\E[44;1;37m            GERENCIAR CHISEL             \E[0m"
-		echo ""
-
-
-		[[ "$(netstat -tlpn | grep 'docker' | wc -l)" != '0' ]] && {
-			sks='\033[1;32mON'
-			echo -e "\033[1;33mPORTAS\033[1;37m: \033[1;32m$(netstat -nplt | grep 'docker' | awk {'print $4'} | cut -d: -f2 | xargs)"
-		} || {
-			sks='\033[1;31mOFF'
-		}
-        [[ "$(netstat -tlpn | grep 'docker' | wc -l)" != '0' ]] && {
-				chiselsts="\033[1;32m⬤ "
-			} || {
-				chiselsts="\033[1;31m○ "
-			}
-		echo ""
-		echo -e "\033[1;31m[\033[1;36m1\033[1;31m] \033[1;37m• \033[1;33mATIVAR CHISEL $chiselsts \033[0m"
-		echo -e "\033[1;31m[\033[1;36m2\033[1;31m] \033[1;37m• \033[1;33mREINICIAR CHISEL\033[0m"
-		echo -e "\033[1;31m[\033[1;36m0\033[1;31m] \033[1;37m• \033[1;33mVOLTAR\033[0m"
-		echo ""
-		echo -ne "\033[1;32mOQUE DESEJA FAZER \033[1;33m?\033[1;37m "
-		read resposta
-		if [[ "$resposta" = '1' ]]; then
-			if netstat -nltp | grep 'docker' 1>/dev/null 2>/dev/null; then
-				clear
-				echo -e "\E[41;1;37m             CHISEL              \E[0m"
-				echo ""
-				fun_chiseloff() {
-					docker stop chisel
-                    docker rm chisel
-					docker.io stop chisel
-                    docker.io rm chisel
-
-				}
-				echo -e "\033[1;32mDESATIVANDO CHISEL\033[1;33m"
-				echo ""
-				fun_bar 'fun_chiseloff'
-				echo ""
-				echo -e "\033[1;32mCHISEL DESATIVADO COM SUCESSO!\033[1;33m"
-				sleep 3
-				fun_chisel
-			else
-                clear
-                fun_installdocker() {
-                    _pacotes=("docker" "docker.io")
-                    for _prog in ${_pacotes[@]}; do
-                    apt install $_prog -y
-                    done
-                }
-                echo -e "\n${YELLOW}ESTEJA CIENTE QUE ESSE METODO É INSTAVEL\nPODE OU NÃO FUNCIONAR NA SUA MAQUINA\nFIQUE CIENTE DOS RISCOS ! ${SCOLOR}\n"
-                echo -ne "${GREEN}DESEJA CONTINUAR A INSTALACAO ? ${YELLOW}[s/n]:${SCOLOR} "
-                read resp
-                [[ "$resp" != @(s|sim|S|SIM) ]] && {
-                    echo -e "\n${RED}Retornando...${SCOLOR}"
-                    sleep 2
-                    conexao
-                }
-                echo -e "\n\033[1;32mSuportado Ubuntu 16+\033[1;33m"
-                echo -e "\n\033[1;32mINSTALANDO O CHISEL !\033[1;33m"
-				echo ""
-				fun_bar 'fun_installdocker'
-				clear
-				echo -e "\E[44;1;37m             CHISEL              \E[0m"
-				echo ""
-				echo -ne "\033[1;32mQUAL PORTA DESEJA ULTILIZAR \033[1;33m?\033[1;37m: "
-				read porta
-				[[ -z "$porta" ]] && {
-					echo ""
-					echo -e "\033[1;31mPorta invalida!"
-					sleep 3
-					clear
-					fun_chisel
-				}
-				verif_ptrs $porta
-                clear
-                echo -ne "\033[1;32mNome do usuário:\033[1;37m ";read username
-                [[ -z $username ]] && {
-                    echo -e "\n${cor1}Nome de usuário vazio ou invalido!${scor}\n"
-                    fun_chisel
-                }
-                [[ ${username} != ?(+|-)+([a-zA-Z0-9]) ]] && {
-                    echo -e "\n${cor1}Você digitou um nome de usuário inválido!${scor}"
-                    echo -e "${cor1}Não use espaços, acentos ou caracteres especiais!${scor}\n"
-                    fun_chisel
-                }
-                sizemin=$(echo ${#username})
-                [[ $sizemin -lt 2 ]] && {
-                    echo -e "\n${cor1}Você digitou um nome de usuário muito curto${scor}"
-                    echo -e "${cor1}use no mínimo dois caracteres!${scor}\n"
-                    fun_chisel
-                }
-                sizemax=$(echo ${#username})
-                [[ $sizemax -gt 10 ]] && {
-                    echo -e "\n${cor1}Você digitou um nome de usuário muito grande"
-                    echo -e "${cor1}use no máximo 10 caracteres!${scor}\n"
-                    fun_chisel
-                }
-                echo -ne "\033[1;32mSenha:\033[1;37m ";read password
-                [[ -z $password ]] && {
-                    echo -e "\n${cor1}Senha vazia ou invalida!${scor}\n"
-                    fun_chisel 
-                }
-                sizepass=$(echo ${#password})
-                [[ $sizepass -lt 4 ]] && {
-                    echo -e "\n${cor1}Senha curta!, use no mínimo 4 caracteres${scor}\n"
-                    fun_chisel        
-                }
-                echo -e "\n\033[1;32mCONFIGURANDO CHISEL !\033[0m"
-				echo ""
-                fun_inichisel() {
-                    docker run --name chisel -p $porta:$porta -d --restart always jpillora/chisel server -p $porta --socks5 --key supersecret --auth "$username:$password"
-                    docker.io run --name chisel -p $porta:$porta -d --restart always jpillora/chisel server -p $porta --socks5 --key supersecret --auth "$username:$password"
-                }
-                fun_bar 'fun_inichisel'
-                clear
-                echo -e "\n\033[1;32mCHISEL INSTALADO COM SUCESSO !\033[1;31m PORTA: \033[1;33m${porta}\033[0m"
-				sleep 3
-				clear
-				fun_chisel
-            fi
-        elif [[ "$resposta" = '2' ]]; then
-            clear
-            echo -e "\n\033[1;32mREINICIANDO CHISEL !\033[1;33m"
-			echo ""
-            fun_attchisel() {
-                docker restart chisel
-                docker.io restart chisel
-            }
-            fun_attchisel
-            clear
-            echo -e "\n\033[1;32mCHISEL REINICIANDO COM SUCESSO !\033[1;33m"
-            sleep 1
-            fun_chisel
-        elif [[ "$resposta" = '0' ]]; then
-			echo ""
-			echo -e "\033[1;31mRetornando...\033[0m"
-			sleep 1
-			fun_conexao
-		else
-			echo ""
-			echo -e "\033[1;31mOpcao invalida !\033[0m"
-			sleep 1
-			fun_conexao
-		fi
-    }
 	inst_ssl() {
 		if netstat -nltp | grep 'stunnel4' 1>/dev/null 2>/dev/null; then
 			[[ $(netstat -nltp | grep 'stunnel4' | wc -l) != '0' ]] && sslt=$(netstat -nplt | grep stunnel4 | awk {'print $4'} | awk -F ":" {'print $2'} | xargs) || sslt="\033[1;31mINDISPONIVEL"
@@ -601,9 +454,6 @@ executar_comando() {
 				sleep 3
 				fun_conexao
 			}
-   correção () {
-   sudo apt-get remove stunnel4 -y && apt purge stunnel4 -y && rm -rf /etc/stunnel
-  }
 		else
 			clear
 			echo -e "\E[44;1;37m              INSTALAR SSL TUNNEL               \E[0m"
@@ -620,8 +470,23 @@ executar_comando() {
 				portssl='22'
 			elif [[ "$resposta" = '2' ]]; then
 				portssl='80'
-			elif [[ "resposta" = '3' ]]; then
-			 sudo apt-get remove stunnel4 -y && apt purge stunnel4 -y && rm -rf /etc/stunnel
+			elif [[ "resposta" = '3' ]] && {
+				echo -e "\033[1;32mREMOVENDO !\033[0m"
+				del_stunnel() {
+					service stunnel4 stop
+					apt-get remove stunnel4 -y
+					apt-get autoremove stunnel4 -y
+					apt-get purge stunnel4 -y
+					rm -rf /etc/stunnel/stunnel.conf
+					rm -rf /etc/default/stunnel4
+					rm -rf /etc/stunnel/cert.cert
+					rm -rf /etc/stunnel/key.key
+				}
+				echo ""
+				fun_bar 'del_stunnel'
+				echo ""
+				echo -e "\033[1;32mREMOVIDO COM SUCESSO!\033[0m"
+				sleep 3
 				fun_conexao
 			elif [[ "$resposta" = '0' ]]; then
 				echo -e "\033[1;31mRetornando...\033[0m"
@@ -1529,6 +1394,270 @@ exit 0' >$RCLOCAL
 			fun_conexao
 		fi
 	}
+	fun_socks() {
+	if ps x | grep -w proxy.py | grep -v grep 1>/dev/null 2>/dev/null; then
+		clear
+		echo -e "\E[41;1;37m             PROXY SOCKS              \E[0m"
+		echo ""
+	fun_socksoff() {
+			for pidproxy in $(screen -ls | grep ".proxy" | awk {'print $1'}); do
+			screen -r -S "$pidproxy" -X quit
+		done
+	[[ $(grep -wc "proxy.py" /etc/autostart) != '0' ]] && {
+		sed -i '/proxy.py/d' /etc/autostart
+	}
+		sleep 1
+		screen -wipe >/dev/null
+		}
+		echo -e "\033[1;32mDESATIVANDO O PROXY SOCKS\033[1;33m"
+		echo ""
+		fun_bar 'fun_socksoff'
+		echo ""
+		echo -e "\033[1;32mPROXY SOCKS DESATIVADO COM SUCESSO!\033[1;33m"
+		sleep 3
+		fun_socks
+	else
+		clear
+		echo -e "\E[44;1;37m             PROXY SOCKS              \E[0m"
+		echo ""
+		echo -ne "\033[1;32mQUAL PORTA DESEJA ULTILIZAR \033[1;33m?\033[1;37m: "
+		read porta
+		 [[ -z "$porta" ]] && {
+		echo ""
+		echo -e "\033[1;31mPorta invalida!"
+	sleep 3
+		clear
+		menu_proxy
+	}
+		verif_ptrs $porta
+	fun_inisocks() {
+		sleep 1
+		screen -dmS proxy python /etc/SSHPlus/proxy.py $porta
+		 [[ $(grep -wc "proxy.py" /etc/autostart) = '0' ]] && {
+		echo -e "netstat -tlpn | grep -w $porta > /dev/null || {  screen -r -S 'proxy' -X quit;  screen -dmS proxy python /etc/SSHPlus/proxy.py $porta; }" >>/etc/autostart
+	} || {
+	    sed -i '/proxy.py/d' /etc/autostart
+		echo -e "netstat -tlpn | grep -w $porta > /dev/null || {  screen -r -S 'proxy' -X quit;  screen -dmS proxy python /etc/SSHPlus/proxy.py $porta; }" >>/etc/autostart
+		}
+	}
+		echo ""
+		echo -e "\033[1;32mINICIANDO O PROXY SOCKS\033[1;33m"
+		echo ""
+		fun_bar 'fun_inisocks'
+		echo ""
+		echo -e "\033[1;32mSOCKS ATIVADO COM SUCESSO\033[1;33m"
+		sleep 3
+		menu_proxy
+	}
+	fun_websocket() {
+	if ps x | grep -w wsproxy.py | grep -v grep 1>/dev/null 2>/dev/null; then
+				clear
+				echo -e "\E[41;1;37m             WEBSOCKET              \E[0m"
+				echo ""
+				fun_wssocksoff() {
+					for pidproxy in $(screen -ls | grep ".ws" | awk {'print $1'}); do
+						screen -r -S "$pidproxy" -X quit
+					done
+					[[ $(grep -wc "wsproxy.py" /etc/autostart) != '0' ]] && {
+						sed -i '/wsproxy.py/d' /etc/autostart
+					}
+					sleep 1
+					screen -wipe >/dev/null
+				}
+				echo -e "\033[1;32mDESATIVANDO O WEBSOCKET\033[1;33m"
+				echo ""
+				fun_bar 'fun_wssocksoff'
+				echo ""
+				echo -e "\033[1;32mWEBSOCKET DESATIVADO COM SUCESSO!\033[1;33m"
+				sleep 3
+				menu_proxy
+			else
+				clear
+				echo -e "\E[44;1;37m             WEBSOCKET              \E[0m"
+				echo ""
+				echo -ne "\033[1;32mQUAL PORTA DESEJA ULTILIZAR \033[1;33m?\033[1;37m: "
+				read porta
+				[[ -z "$porta" ]] && {
+					echo ""
+					echo -e "\033[1;31mPorta invalida!"
+					sleep 3
+					clear
+					menu_proxy
+				}
+				verif_ptrs $porta
+				fun_iniwssocks() {
+					sleep 1
+					screen -dmS ws python /etc/SSHPlus/wsproxy.py $porta
+					[[ $(grep -wc "wsproxy.py" /etc/autostart) = '0' ]] && {
+						echo -e "netstat -tlpn | grep -w $porta > /dev/null || {  screen -r -S 'ws' -X quit;  screen -dmS ws python /etc/SSHPlus/wsproxy.py $porta; }" >>/etc/autostart
+					} || {
+						sed -i '/wsproxy.py/d' /etc/autostart
+						echo -e "netstat -tlpn | grep -w $porta > /dev/null || {  screen -r -S 'ws' -X quit;  screen -dmS ws python /etc/SSHPlus/wsproxy.py $porta; }" >>/etc/autostart
+					}
+				}
+				echo ""
+				echo -e "\033[1;32mINICIANDO O WEBSOCKET\033[1;33m"
+				echo ""
+				fun_bar 'fun_iniwssocks'
+				echo ""
+				echo -e "\033[1;32WSSOCKS ATIVADO COM SUCESSO\033[1;33m"
+				sleep 3
+				menu_proxy
+	}
+	fun_security() {
+	if ps x | grep -w websecurity | grep -v grep 1>/dev/null 2>/dev/null; then
+		echo -e "\E[41;1;37m          WEBSOCKET SECURITY         \E[0m"
+		echo ""
+		fun_securityoff() {
+			for pidsecurity in $(screen -ls | grep ".websecurity" | awk {'print $1'}); do
+				screen -r -S "$pidsecurity" -X quit
+			done
+			[[ $(grep -wc "websecurity" /etc/autostart) != '0' ]] && {
+				sed -i '/websecurity/d' /etc/autostart
+			}
+			sleep 1
+			screen -wipe >/dev/null
+		}
+		echo -e "\033[1;32mDESATIVANDO O WEBSOCKET SECURITY\033[1;33m"
+		echo ""
+		fun_bar 'fun_securityoff'
+		echo ""
+		echo -e "\033[1;32mSECURITY DESATIVADO COM SUCESSO!\033[1;33m"
+		
+		menu_proxy
+	else
+		echo -e "\E[44;1;37m          WEBSOCKET SECURITY         \E[0m"
+		echo ""
+		echo -e "\033[1;32mQUAL PORTA DESEJA ULTILIZAR ? \033"
+		echo ""
+		echo -e "\033[1;32mEXEMPLO :\033[1;33m80 ou 8080\033"
+		echo ""
+		read -p "$(echo -e "\033[1;32mQUAL PORTA DESEJA UTILIZAR? \033[1;37m: ")" portaws
+		[[ -z "$portaws" ]] && {
+			echo ""
+			echo -e "\033[1;31mPorta invalida!"
+			
+			menu_proxy
+		}
+		verif_ptrs $portaws
+		fun_inisecurity() {
+			sleep 1
+			screen -dmS websecurity /bin/websecurity -proxy_port 0.0.0.0:$portaws -msg=SECURITY
+			[[ $(grep -wc "websecurity" /etc/autostart) = '0' ]] && {
+				echo -e "netstat -tlpn | grep -w $portaws > /dev/null || {  screen -r -S 'websecurity' -X quit;  screen -dmS websecurity /bin/websecurity -proxy_port 0.0.0.0:$portaws -msg=SECURITY; }" >>/etc/autostart
+			} || {
+				sed -i '/security/d' /etc/autostart
+				echo -e "netstat -tlpn | grep -w $portaws > /dev/null || {  screen -r -S 'websecurity' -X quit;  screen -dmS websecurity /bin/websecurity -proxy_port 0.0.0.0:$portaws -msg=SECURITY; }" >>/etc/autostart
+			}
+		}
+		echo ""
+		echo -e "\033[1;32mINICIANDO WEBSOCKET SECURITY\033[1;33m"
+		echo ""
+		fun_bar 'fun_inisecurity'
+		echo ""
+		echo -e "\033[1;32SECURITY ATIVADO COM SUCESSO\033[1;33m"
+		
+		menu_proxy
+	}
+	menu_proxy() {
+		clear
+		[[ $(screen -list | grep -wc 'proxy1') != '0' ]] && sks02="\033[1;32m⬤ " || sks02="\033[1;31m⬤ "
+		[[ $(screen -list | grep -wc 'proxy2') != '0' ]] && sks04="\033[1;32m⬤ " || sks04="\033[1;31m⬤ "
+		echo -e "\E[44;1;37m             PROXY            \E[0m"
+		echo -e "\033[0;36m╔════════════•⊱✦⊰•════════════╗\033[0m"
+		[[ $(netstat -nplt | grep -wc 'proxy') != '0' ]] && {
+			sks13="\033[1;32m⬤ "
+			echo -e "   \033[1;33mPROXY-PRO: \033[1;32m$(netstat -nplt | grep 'proxy' | awk -F ":" {'print $4'} | xargs)"
+		    } || {
+			sks13="\033[1;31m⬤ "
+		    }
+		[[ "$(netstat -tlpn | grep 'python' | wc -l)" != '0' ]] && {
+				echo -e "   \033[1;33mSOCKS/WEBSOCKET: \033[1;32m$(netstat -nplt | grep 'python' | awk {'print $4'} | cut -d: -f2 | xargs)"
+				sks400="\033[1;32m⬤ "
+			} || {
+				sks400="\033[1;31m⬤ "
+			}
+		[[ "$(netstat -tlpn | grep 'squid' | wc -l)" != '0' ]] && {
+				echo -e "   \033[1;33mSQUID: \033[1;32m$(netstat -nplt | grep 'squid' | awk -F ":" {'print $4'} | xargs)"
+				sks03="\033[1;32m⬤ "
+			} || {
+				sks03="\033[1;31m⬤ "
+			}
+			[[ "$(netstat -tlpn | grep 'websecurity' | wc -l)" != '0' ]] && {
+				echo -e "   \033[1;33mSECURITY \033[1;32m$(netstat -nplt | grep 'websecurity' | awk -F ":" {'print $4'} | xargs)"
+				stssec="\033[1;32m⬤ "
+			} || {
+				stssec="\033[1;31m○⬤ "
+			}
+		echo -e "\033[0;36m° ° ° ° ° ° ° ° ° ° ° ° ° ° ° °\033[0m"
+		echo -e "\033[1;31m[\033[1;36m01\033[1;31m] \033[1;37m• \033[1;37mPROXY-PRO $sks13\033[1;31m
+[\033[1;36m02\033[1;31m] \033[1;37m• \033[1;37mSOCKS $sks02\033[1;31m
+[\033[1;36m03\033[1;31m] \033[1;37m• \033[1;37mSQUID $sks03\033[1;31m
+[\033[1;36m04\033[1;31m] \033[1;37m• \033[1;37mSECURITY $stssec\033[1;31m
+[\033[1;36m05\033[1;31m] \033[1;37m• \033[1;37mWEBSOCKET $sks04\033[1;31m
+[\033[1;36m00\033[1;31m] \033[1;37m• \033[1;37mVOLTAR\033[0m"
+		echo -e "\033[0;36m╚════════════•⊱✦⊰•════════════╝\033[0m"
+		echo -ne "  \033[1;31m➤ \033[1;32mOPÇÃO\033[1;33m\033[1;31m\033[1;37m: ";
+        read option
+        case $option in
+    1 | 01)
+		clear
+	    bash <(wget -qO- https://raw.githubusercontent.com/vmell0/RustyProxy/refs/heads/main/install.sh)
+        clear
+	    menuproxy
+	;; 
+	2 | 02)
+        clear
+        fun_socks
+    ;;
+    3 | 03)
+        clear
+        fun_squid
+    ;;
+    4 | 04)
+        clear
+	[[ ! -e /bin/websecurity ]] && {
+	    wget -qO /bin/websecurity https://raw.githubusercontent.com/root719/TMY-SSH-PLUS-V3/main/websecurity
+		chmod +x /bin/websecurity
+	}
+        fun_security
+    ;;
+    5 | 05)
+        clear
+        fun_websocket
+    ;;
+    0 | 00)
+	    clear
+        fun_conexao
+    ;;
+    *)
+	    echo -e "\n\033[1;31mOpcao invalida!"
+	    sleep 2
+		menu_proxy
+	;;
+}
+		elif [[ "$resp" = '3' ]]; then
+		    clear
+			echo -e "          \033[1;33m[\033[1;31m!\033[1;33m] \033[1;32mCORRIGINDO SSH \033[1;33m[\033[1;31m!\033[1;33m] \033[0m"
+            echo ""
+			fun_cossh () {
+	        echo 'MaxStartups 1500:10:1500' >> /etc/ssh/sshd_config && service ssh restart
+	        }
+		    fun_bar 'fun_cossh'
+			sleep 2
+			fun_conexao
+		elif [[ "$resp" = '0' ]]; then
+			clear
+		    echo ""
+		    echo -e "\033[1;33mVOLTANDO...\033[0m"
+		    sleep 1
+			fun_conexao
+		else
+			echo -e "\n\033[1;31mOpcao invalida!"
+			sleep 2
+			fun_conexao
+		fi
+	}
 	x="ok"
 	fun_conexao() {
 		while true $x != "ok"; do
@@ -1606,17 +1735,18 @@ echo -e "   \033[1;33mSSH: \033[1;32m$(grep 'Port' /etc/ssh/sshd_config | cut -d
 			sks13="\033[1;31m⬤ "
 		    }
 			[[ "$(netstat -tlpn 2>/dev/null | grep -E '/proxyssl( |$)' | wc -l)" != '0' ]] && {
-				echo -e "\033[01;31m║\033[1;32mSERVICO: \033[1;33mPROXY-SSL \033[1;32mPORTA: \033[1;37m$(netstat -nplt 2>/dev/null | grep -E '/proxyssl( |$)' | awk '{print $4}' | awk -F ':' '{print $NF}' | xargs)"
-				sts0="\033[1;32m◉ "
+				echo -e "033[1;33mPROXY-SSL \033[1;32mPORTA: \033[1;37m$(netstat -nplt 2>/dev/null | grep -E '/proxyssl( |$)' | awk '{print $4}' | awk -F ':' '{print $NF}' | xargs)"
+				sts0="\033[1;32m⬤ "
 			} || {
-				sts0="\033[1;31m○ "
+				sts0="\033[1;31m⬤ "
 			}
 echo -e "\033[0;36m° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° °\033[0m"
 echo -e "\033[0;31m  [\033[1;36m01\033[0;31m] \033[1;37m• \033[1;37mSSH $sks01\033[0;31m
 \033[0;31m  [\033[1;36m02\033[0;31m] \033[1;37m• \033[1;37mV2RAY $sks08\033[1;31m
-\033[0;31m  [\033[1;36m03\033[0;31m] \033[1;37m• \033[1;37mPROXY-PRO $sks13\033[0;31m
-\033[0;31m  [\033[1;36m04\033[0;31m] \033[1;37m• \033[1;37mOPENVPN $sks06\033[0;31m
-\033[0;31m  [\033[1;36m05\033[0;31m] \033[1;37m• \033[1;37mPROXY-SSL $sks0\033[0;31m
+\033[0;31m  [\033[1;36m03\033[0;31m] \033[1;37m• \033[1;37mSSL-TUNNEL $sks07\033[1;31m
+\033[0;31m  [\033[1;36m04\033[0;31m] \033[1;37m• \033[1;37mPROXY-MANAGER\033[0;31m
+\033[0;31m  [\033[1;36m05\033[0;31m] \033[1;37m• \033[1;37mOPENVPN $sks06\033[0;31m
+\033[0;31m  [\033[1;36m06\033[0;31m] \033[1;37m• \033[1;37mPROXY-SSL $sks0\033[0;31m
 \033[0;31m  [\033[1;36m00\033[0;31m] \033[1;37m• \033[1;37mVOLTAR  \033[1;32m<\033[1;33m<\033[1;31m<\033[0;31m"
 echo -e "\033[0;36m╚════════════════════════•⊱✦⊰•════════════════════════╝\033[0m"
 echo -ne "  \033[1;31m➤ \033[1;32mOPÇÃO\033[1;33m\033[1;31m\033[1;37m: ";
@@ -1635,16 +1765,18 @@ case $option in
 	;;
 	3 | 03)
 	clear
-	bash <(wget -qO- https://raw.githubusercontent.com/vmell0/RustyProxy/refs/heads/main/install.sh)
-    clear
-	menuproxy
+	inst_ssl
 	;;
 	4 | 04)
+	clear
+	menu_proxy
+	;;
+	5 | 05)
 	tput reset
 	clear
 	fun_openvpn
 	;;
-	5 | 05) 
+	6 | 06) 
 	clear
 	bash <(wget -qO- https://raw.githubusercontent.com/vmell0/RustySSL/refs/heads/main/install.sh)
     clear

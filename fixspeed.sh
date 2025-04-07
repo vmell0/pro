@@ -1,3 +1,0 @@
-#!/bin/bash
-clear
-apt-get autoremove speedtest-cli -y && apt-get remove speedtest -y && curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash && mkdir -p /etc/apt/keyrings && chmod 755 /etc/apt/keyrings && curl -fsSL https://packagecloud.io/ookla/speedtest-cli/gpgkey | gpg --dearmor > /etc/apt/keyrings/ookla_speedtest-cli-archive-keyring.gpg && apt-get update -y && apt-get upgrade -y && yes | apt-get install speedtest -y
